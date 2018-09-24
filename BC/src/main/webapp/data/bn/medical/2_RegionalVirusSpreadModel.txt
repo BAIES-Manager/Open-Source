@@ -1,0 +1,29 @@
+// 2. Regional Virus Spread Model
+
+defineNode(HasWarningSystems_1_1, des);
+{
+	defineState(Discrete, Yes, No);
+	p(HasWarningSystems_1_1 ) = { Yes: 0.5; No: 0.5; } 
+}
+ 
+defineNode(RegionalSpreadRate_1_1, des);
+{
+	defineState(Discrete, High, Low);
+	p(RegionalSpreadRate_1_1 | HasWarningSystems_1_1)
+		=  if (HasWarningSystems_1_1 == Yes )
+		{ High: 0.1; Low: 0.9; }
+		else if (HasWarningSystems_1_1 == No )
+		{ High: 0.9; Low: 0.1; }
+}
+ 
+defineNode(DZ_6_1_1, des);
+{
+	defineState(Discrete, HotZone, ColdZone);
+	p( DZ_6_1_1 | RegionalSpreadRate_1_1)
+		=  if (RegionalSpreadRate_1_1 == High )
+		{ HotZone: 0.8; ColdZone: 0.2; }
+		else if (RegionalSpreadRate_1_1 == Low )
+		{ HotZone: 0.6; ColdZone: 0.4; }
+}
+ 
+

@@ -1,0 +1,171 @@
+// 4. Infectious Disease Patient Model
+
+defineNode(DZ_6_1_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p(DZ_6_1_1 ) = { HotZone: 0.5; ColdZone: 0.5; } 
+}
+ 
+defineNode(IsMutatedVirus_1_1, des);
+{defineState(Discrete, No, Yes);
+p(IsMutatedVirus_1_1 ) = { No: 0.5; Yes: 0.5; } 
+}
+ 
+defineNode(ReservoirPopulationSize_1_1, des);
+{defineState(Discrete, BelowThreshold, AboveThreshold);
+p(ReservoirPopulationSize_1_1 ) = { BelowThreshold: 0.5; AboveThreshold: 0.5; } 
+}
+ 
+defineNode(HumanPopulationSize_1_1, des);
+{defineState(Discrete, BelowThreshold, AboveThreshold);
+p(HumanPopulationSize_1_1 ) = { BelowThreshold: 0.5; AboveThreshold: 0.5; } 
+}
+ 
+defineNode(Confirmed_1_1, des);
+{defineState(Discrete, BelowThreshold, AboveThreshold);
+p( Confirmed_1_1 | DZ_6_1_1, IsMutatedVirus_1_1, ReservoirPopulationSize_1_1, HumanPopulationSize_1_1)
+= if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.8; AboveThreshold: 0.2; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.2; AboveThreshold: 0.8; }
+}
+ 
+defineNode(Probable_1_1, des);
+{defineState(Discrete, BelowThreshold, AboveThreshold);
+p( Probable_1_1 | DZ_6_1_1, IsMutatedVirus_1_1, ReservoirPopulationSize_1_1, HumanPopulationSize_1_1)
+= if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.8; AboveThreshold: 0.2; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.2; AboveThreshold: 0.8; }
+}
+ 
+defineNode(Suspected_1_1, des);
+{defineState(Discrete, BelowThreshold, AboveThreshold);
+p( Suspected_1_1 | DZ_6_1_1, IsMutatedVirus_1_1, ReservoirPopulationSize_1_1, HumanPopulationSize_1_1)
+= if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.8; AboveThreshold: 0.2; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.2; AboveThreshold: 0.8; }
+}
+ 
+defineNode(Fatality_1_1, des);
+{defineState(Discrete, BelowThreshold, AboveThreshold);
+p( Fatality_1_1 | DZ_6_1_1, IsMutatedVirus_1_1, ReservoirPopulationSize_1_1, HumanPopulationSize_1_1)
+= if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.8; AboveThreshold: 0.2; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.65; AboveThreshold: 0.35; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == ColdZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.5; AboveThreshold: 0.5; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == No && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ BelowThreshold: 0.35; AboveThreshold: 0.65; }
+else if (DZ_6_1_1 == HotZone && IsMutatedVirus_1_1 == Yes && ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ BelowThreshold: 0.2; AboveThreshold: 0.8; }
+}
+ 
+

@@ -1,0 +1,97 @@
+// Hidden Markov Model
+// Hidden Markov Model (HMM) is a statistical Markov model in which the system being modeled is assumed to be a Markov process with unobserved (i.e. hidden) states.
+
+defineNode(X_1, des);
+{defineState(Discrete, T, F);
+p(X_1 ) = { T: 0.5; F: 0.5; } 
+}
+ 
+defineNode(Y_1, des);
+{defineState(Discrete, T, F);
+p(Y_1 | X_1 ) =     if (X_1 == T )
+{ T: 0.8; F: 0.2; }
+     if (X_1 == F )
+{ T: 0.2; F: 0.8; }
+}
+ 
+defineNode(X_2, des);
+{defineState(Discrete, T, F);
+p(X_2 | X_1 ) =     if (X_1 == T )
+{ T: 0.8; F: 0.2; }
+     if (X_1 == F )
+{ T: 0.2; F: 0.8; }
+}
+ 
+defineNode(Y_2, des);
+{defineState(Discrete, T, F);
+p(Y_2 | X_2 ) =     if (X_2 == T )
+{ T: 0.8; F: 0.2; }
+     if (X_2 == F )
+{ T: 0.2; F: 0.8; }
+}
+ 
+defineNode(X_3, des);
+{defineState(Discrete, T, F);
+p(X_3 | X_2 ) =     if (X_2 == T )
+{ T: 0.8; F: 0.2; }
+     if (X_2 == F )
+{ T: 0.2; F: 0.8; }
+}
+ 
+defineNode(Y_3, des);
+{defineState(Discrete, T, F);
+p(Y_3 | X_3 ) =     if (X_3 == T )
+{ T: 0.8; F: 0.2; }
+     if (X_3 == F )
+{ T: 0.2; F: 0.8; }
+}
+ 
+defineNode(X_4, des);
+{defineState(Discrete, T, F);
+p(X_4 | X_3 ) =     if (X_3 == T )
+{ T: 0.8; F: 0.2; }
+     if (X_3 == F )
+{ T: 0.2; F: 0.8; }
+}
+ 
+defineNode(Y_4, des);
+{defineState(Discrete, T, F);
+p(Y_4 | X_4 ) =     if (X_4 == T )
+{ T: 0.8; F: 0.2; }
+     if (X_4 == F )
+{ T: 0.2; F: 0.8; }
+}
+ 
+defineNode(X_5, des);
+{defineState(Discrete, T, F);
+p(X_5 | X_4 ) =     if (X_4 == T )
+{ T: 0.8; F: 0.2; }
+     if (X_4 == F )
+{ T: 0.2; F: 0.8; }
+}
+ 
+defineNode(Y_5, des);
+{defineState(Discrete, T, F);
+p(Y_5 | X_5 ) =     if (X_5 == T )
+{ T: 0.8; F: 0.2; }
+     if (X_5 == F )
+{ T: 0.2; F: 0.8; }
+}
+ 
+defineNode(X_6, des);
+{defineState(Discrete, T, F);
+p(X_6 | X_5 ) =     if (X_5 == T )
+{ T: 0.8; F: 0.2; }
+     if (X_5 == F )
+{ T: 0.2; F: 0.8; }
+}
+ 
+defineNode(Y_6, des);
+{defineState(Discrete, T, F);
+p(Y_6 | X_6 ) =     if (X_6 == T )
+{ T: 0.8; F: 0.2; }
+     if (X_6 == F )
+{ T: 0.2; F: 0.8; }
+}
+ 
+

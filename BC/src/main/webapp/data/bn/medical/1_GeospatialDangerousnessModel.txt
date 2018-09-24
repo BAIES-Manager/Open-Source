@@ -1,0 +1,1819 @@
+// 1. Geospatial Dangerousness Model
+
+
+defineNode(DZ_1_1_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_1_1_1 ) = { HotZone: 0.5; ColdZone: 0.5; } 
+}
+ 
+defineNode(DZ_2_1_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_2_1_1 | DZ_1_1_1)
+=     if (DZ_1_1_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_1_1_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_3_1_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_3_1_1 | DZ_2_1_1)
+=     if (DZ_2_1_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_2_1_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_1_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_1_1 | DZ_3_1_1)
+=     if (DZ_3_1_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_1_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_1_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_1_1 | DZ_4_1_1)
+=     if (DZ_4_1_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_1_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_1_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_1_1 | DZ_5_1_1)
+=     if (DZ_5_1_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_1_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_1_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_1_2 | DZ_5_1_1, DZ_5_1_2)
+=     if (DZ_5_1_1 == HotZone && DZ_5_1_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_1_1 == HotZone && DZ_5_1_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_1 == ColdZone && DZ_5_1_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_1 == ColdZone && DZ_5_1_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_2_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_2_1 | DZ_5_1_1, DZ_5_2_1)
+=     if (DZ_5_1_1 == HotZone && DZ_5_2_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_1_1 == HotZone && DZ_5_2_1 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_1 == ColdZone && DZ_5_2_1 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_1 == ColdZone && DZ_5_2_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_2_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_2_2 | DZ_5_1_1, DZ_5_2_1, DZ_5_1_2, DZ_5_2_2)
+=     if (DZ_5_1_1 == HotZone && DZ_5_2_1 == HotZone && DZ_5_1_2 == HotZone && DZ_5_2_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_1_1 == ColdZone && DZ_5_2_1 == HotZone && DZ_5_1_2 == HotZone && DZ_5_2_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_1 == HotZone && DZ_5_2_1 == ColdZone && DZ_5_1_2 == HotZone && DZ_5_2_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_1 == HotZone && DZ_5_2_1 == HotZone && DZ_5_1_2 == ColdZone && DZ_5_2_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_1 == HotZone && DZ_5_2_1 == HotZone && DZ_5_1_2 == HotZone && DZ_5_2_2 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_1 == ColdZone && DZ_5_2_1 == ColdZone && DZ_5_1_2 == HotZone && DZ_5_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_1 == ColdZone && DZ_5_2_1 == HotZone && DZ_5_1_2 == ColdZone && DZ_5_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_1 == ColdZone && DZ_5_2_1 == HotZone && DZ_5_1_2 == HotZone && DZ_5_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_1 == HotZone && DZ_5_2_1 == ColdZone && DZ_5_1_2 == ColdZone && DZ_5_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_1 == HotZone && DZ_5_2_1 == ColdZone && DZ_5_1_2 == HotZone && DZ_5_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_1 == HotZone && DZ_5_2_1 == HotZone && DZ_5_1_2 == ColdZone && DZ_5_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_1 == ColdZone && DZ_5_2_1 == ColdZone && DZ_5_1_2 == ColdZone && DZ_5_2_2 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_1 == ColdZone && DZ_5_2_1 == ColdZone && DZ_5_1_2 == HotZone && DZ_5_2_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_1 == ColdZone && DZ_5_2_1 == HotZone && DZ_5_1_2 == ColdZone && DZ_5_2_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_1 == HotZone && DZ_5_2_1 == ColdZone && DZ_5_1_2 == ColdZone && DZ_5_2_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_1 == ColdZone && DZ_5_2_1 == ColdZone && DZ_5_1_2 == ColdZone && DZ_5_2_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_1_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_1_2 | DZ_4_1_1, DZ_4_1_2)
+=     if (DZ_4_1_1 == HotZone && DZ_4_1_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_1_1 == HotZone && DZ_4_1_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_1 == ColdZone && DZ_4_1_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_1 == ColdZone && DZ_4_1_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_1_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_1_3 | DZ_5_1_2, DZ_5_1_3)
+=     if (DZ_5_1_2 == HotZone && DZ_5_1_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_1_2 == HotZone && DZ_5_1_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_2 == ColdZone && DZ_5_1_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_2 == ColdZone && DZ_5_1_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_2_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_2_3 | DZ_5_1_2, DZ_5_2_2, DZ_5_1_3, DZ_5_2_3)
+=     if (DZ_5_1_2 == HotZone && DZ_5_2_2 == HotZone && DZ_5_1_3 == HotZone && DZ_5_2_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_1_2 == ColdZone && DZ_5_2_2 == HotZone && DZ_5_1_3 == HotZone && DZ_5_2_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_2 == HotZone && DZ_5_2_2 == ColdZone && DZ_5_1_3 == HotZone && DZ_5_2_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_2 == HotZone && DZ_5_2_2 == HotZone && DZ_5_1_3 == ColdZone && DZ_5_2_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_2 == HotZone && DZ_5_2_2 == HotZone && DZ_5_1_3 == HotZone && DZ_5_2_3 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_2 == ColdZone && DZ_5_2_2 == ColdZone && DZ_5_1_3 == HotZone && DZ_5_2_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_2 == ColdZone && DZ_5_2_2 == HotZone && DZ_5_1_3 == ColdZone && DZ_5_2_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_2 == ColdZone && DZ_5_2_2 == HotZone && DZ_5_1_3 == HotZone && DZ_5_2_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_2 == HotZone && DZ_5_2_2 == ColdZone && DZ_5_1_3 == ColdZone && DZ_5_2_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_2 == HotZone && DZ_5_2_2 == ColdZone && DZ_5_1_3 == HotZone && DZ_5_2_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_2 == HotZone && DZ_5_2_2 == HotZone && DZ_5_1_3 == ColdZone && DZ_5_2_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_2 == ColdZone && DZ_5_2_2 == ColdZone && DZ_5_1_3 == ColdZone && DZ_5_2_3 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_2 == ColdZone && DZ_5_2_2 == ColdZone && DZ_5_1_3 == HotZone && DZ_5_2_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_2 == ColdZone && DZ_5_2_2 == HotZone && DZ_5_1_3 == ColdZone && DZ_5_2_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_2 == HotZone && DZ_5_2_2 == ColdZone && DZ_5_1_3 == ColdZone && DZ_5_2_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_2 == ColdZone && DZ_5_2_2 == ColdZone && DZ_5_1_3 == ColdZone && DZ_5_2_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_2_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_2_1 | DZ_4_1_1, DZ_4_2_1)
+=     if (DZ_4_1_1 == HotZone && DZ_4_2_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_1_1 == HotZone && DZ_4_2_1 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_1 == ColdZone && DZ_4_2_1 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_1 == ColdZone && DZ_4_2_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_3_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_3_1 | DZ_5_2_1, DZ_5_3_1)
+=     if (DZ_5_2_1 == HotZone && DZ_5_3_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_2_1 == HotZone && DZ_5_3_1 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_1 == ColdZone && DZ_5_3_1 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_1 == ColdZone && DZ_5_3_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_3_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_3_2 | DZ_5_2_1, DZ_5_3_1, DZ_5_2_2, DZ_5_3_2)
+=     if (DZ_5_2_1 == HotZone && DZ_5_3_1 == HotZone && DZ_5_2_2 == HotZone && DZ_5_3_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_2_1 == ColdZone && DZ_5_3_1 == HotZone && DZ_5_2_2 == HotZone && DZ_5_3_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_1 == HotZone && DZ_5_3_1 == ColdZone && DZ_5_2_2 == HotZone && DZ_5_3_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_1 == HotZone && DZ_5_3_1 == HotZone && DZ_5_2_2 == ColdZone && DZ_5_3_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_1 == HotZone && DZ_5_3_1 == HotZone && DZ_5_2_2 == HotZone && DZ_5_3_2 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_1 == ColdZone && DZ_5_3_1 == ColdZone && DZ_5_2_2 == HotZone && DZ_5_3_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_1 == ColdZone && DZ_5_3_1 == HotZone && DZ_5_2_2 == ColdZone && DZ_5_3_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_1 == ColdZone && DZ_5_3_1 == HotZone && DZ_5_2_2 == HotZone && DZ_5_3_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_1 == HotZone && DZ_5_3_1 == ColdZone && DZ_5_2_2 == ColdZone && DZ_5_3_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_1 == HotZone && DZ_5_3_1 == ColdZone && DZ_5_2_2 == HotZone && DZ_5_3_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_1 == HotZone && DZ_5_3_1 == HotZone && DZ_5_2_2 == ColdZone && DZ_5_3_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_1 == ColdZone && DZ_5_3_1 == ColdZone && DZ_5_2_2 == ColdZone && DZ_5_3_2 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_1 == ColdZone && DZ_5_3_1 == ColdZone && DZ_5_2_2 == HotZone && DZ_5_3_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_1 == ColdZone && DZ_5_3_1 == HotZone && DZ_5_2_2 == ColdZone && DZ_5_3_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_1 == HotZone && DZ_5_3_1 == ColdZone && DZ_5_2_2 == ColdZone && DZ_5_3_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_1 == ColdZone && DZ_5_3_1 == ColdZone && DZ_5_2_2 == ColdZone && DZ_5_3_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_2_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_2_2 | DZ_4_1_1, DZ_4_2_1, DZ_4_1_2, DZ_4_2_2)
+=     if (DZ_4_1_1 == HotZone && DZ_4_2_1 == HotZone && DZ_4_1_2 == HotZone && DZ_4_2_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_1_1 == ColdZone && DZ_4_2_1 == HotZone && DZ_4_1_2 == HotZone && DZ_4_2_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_1_1 == HotZone && DZ_4_2_1 == ColdZone && DZ_4_1_2 == HotZone && DZ_4_2_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_1_1 == HotZone && DZ_4_2_1 == HotZone && DZ_4_1_2 == ColdZone && DZ_4_2_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_1_1 == HotZone && DZ_4_2_1 == HotZone && DZ_4_1_2 == HotZone && DZ_4_2_2 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_1_1 == ColdZone && DZ_4_2_1 == ColdZone && DZ_4_1_2 == HotZone && DZ_4_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_1 == ColdZone && DZ_4_2_1 == HotZone && DZ_4_1_2 == ColdZone && DZ_4_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_1 == ColdZone && DZ_4_2_1 == HotZone && DZ_4_1_2 == HotZone && DZ_4_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_1 == HotZone && DZ_4_2_1 == ColdZone && DZ_4_1_2 == ColdZone && DZ_4_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_1 == HotZone && DZ_4_2_1 == ColdZone && DZ_4_1_2 == HotZone && DZ_4_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_1 == HotZone && DZ_4_2_1 == HotZone && DZ_4_1_2 == ColdZone && DZ_4_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_1 == ColdZone && DZ_4_2_1 == ColdZone && DZ_4_1_2 == ColdZone && DZ_4_2_2 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_1_1 == ColdZone && DZ_4_2_1 == ColdZone && DZ_4_1_2 == HotZone && DZ_4_2_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_1_1 == ColdZone && DZ_4_2_1 == HotZone && DZ_4_1_2 == ColdZone && DZ_4_2_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_1_1 == HotZone && DZ_4_2_1 == ColdZone && DZ_4_1_2 == ColdZone && DZ_4_2_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_1_1 == ColdZone && DZ_4_2_1 == ColdZone && DZ_4_1_2 == ColdZone && DZ_4_2_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_3_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_3_3 | DZ_5_2_2, DZ_5_3_2, DZ_5_2_3, DZ_5_3_3)
+=     if (DZ_5_2_2 == HotZone && DZ_5_3_2 == HotZone && DZ_5_2_3 == HotZone && DZ_5_3_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_2_2 == ColdZone && DZ_5_3_2 == HotZone && DZ_5_2_3 == HotZone && DZ_5_3_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_2 == HotZone && DZ_5_3_2 == ColdZone && DZ_5_2_3 == HotZone && DZ_5_3_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_2 == HotZone && DZ_5_3_2 == HotZone && DZ_5_2_3 == ColdZone && DZ_5_3_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_2 == HotZone && DZ_5_3_2 == HotZone && DZ_5_2_3 == HotZone && DZ_5_3_3 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_2 == ColdZone && DZ_5_3_2 == ColdZone && DZ_5_2_3 == HotZone && DZ_5_3_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_2 == ColdZone && DZ_5_3_2 == HotZone && DZ_5_2_3 == ColdZone && DZ_5_3_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_2 == ColdZone && DZ_5_3_2 == HotZone && DZ_5_2_3 == HotZone && DZ_5_3_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_2 == HotZone && DZ_5_3_2 == ColdZone && DZ_5_2_3 == ColdZone && DZ_5_3_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_2 == HotZone && DZ_5_3_2 == ColdZone && DZ_5_2_3 == HotZone && DZ_5_3_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_2 == HotZone && DZ_5_3_2 == HotZone && DZ_5_2_3 == ColdZone && DZ_5_3_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_2 == ColdZone && DZ_5_3_2 == ColdZone && DZ_5_2_3 == ColdZone && DZ_5_3_3 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_2 == ColdZone && DZ_5_3_2 == ColdZone && DZ_5_2_3 == HotZone && DZ_5_3_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_2 == ColdZone && DZ_5_3_2 == HotZone && DZ_5_2_3 == ColdZone && DZ_5_3_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_2 == HotZone && DZ_5_3_2 == ColdZone && DZ_5_2_3 == ColdZone && DZ_5_3_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_2 == ColdZone && DZ_5_3_2 == ColdZone && DZ_5_2_3 == ColdZone && DZ_5_3_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_1_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_1_2 | DZ_3_1_1, DZ_3_1_2)
+=     if (DZ_3_1_1 == HotZone && DZ_3_1_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_1_1 == HotZone && DZ_3_1_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_1 == ColdZone && DZ_3_1_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_1 == ColdZone && DZ_3_1_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_1_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_1_3 | DZ_4_1_2, DZ_4_1_3)
+=     if (DZ_4_1_2 == HotZone && DZ_4_1_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_1_2 == HotZone && DZ_4_1_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_2 == ColdZone && DZ_4_1_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_2 == ColdZone && DZ_4_1_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_1_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_1_4 | DZ_5_1_3, DZ_5_1_4)
+=     if (DZ_5_1_3 == HotZone && DZ_5_1_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_1_3 == HotZone && DZ_5_1_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_3 == ColdZone && DZ_5_1_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_3 == ColdZone && DZ_5_1_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_2_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_2_4 | DZ_5_1_3, DZ_5_2_3, DZ_5_1_4, DZ_5_2_4)
+=     if (DZ_5_1_3 == HotZone && DZ_5_2_3 == HotZone && DZ_5_1_4 == HotZone && DZ_5_2_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_1_3 == ColdZone && DZ_5_2_3 == HotZone && DZ_5_1_4 == HotZone && DZ_5_2_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_3 == HotZone && DZ_5_2_3 == ColdZone && DZ_5_1_4 == HotZone && DZ_5_2_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_3 == HotZone && DZ_5_2_3 == HotZone && DZ_5_1_4 == ColdZone && DZ_5_2_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_3 == HotZone && DZ_5_2_3 == HotZone && DZ_5_1_4 == HotZone && DZ_5_2_4 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_3 == ColdZone && DZ_5_2_3 == ColdZone && DZ_5_1_4 == HotZone && DZ_5_2_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_3 == ColdZone && DZ_5_2_3 == HotZone && DZ_5_1_4 == ColdZone && DZ_5_2_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_3 == ColdZone && DZ_5_2_3 == HotZone && DZ_5_1_4 == HotZone && DZ_5_2_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_3 == HotZone && DZ_5_2_3 == ColdZone && DZ_5_1_4 == ColdZone && DZ_5_2_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_3 == HotZone && DZ_5_2_3 == ColdZone && DZ_5_1_4 == HotZone && DZ_5_2_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_3 == HotZone && DZ_5_2_3 == HotZone && DZ_5_1_4 == ColdZone && DZ_5_2_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_3 == ColdZone && DZ_5_2_3 == ColdZone && DZ_5_1_4 == ColdZone && DZ_5_2_4 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_3 == ColdZone && DZ_5_2_3 == ColdZone && DZ_5_1_4 == HotZone && DZ_5_2_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_3 == ColdZone && DZ_5_2_3 == HotZone && DZ_5_1_4 == ColdZone && DZ_5_2_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_3 == HotZone && DZ_5_2_3 == ColdZone && DZ_5_1_4 == ColdZone && DZ_5_2_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_3 == ColdZone && DZ_5_2_3 == ColdZone && DZ_5_1_4 == ColdZone && DZ_5_2_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_2_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_2_3 | DZ_4_1_2, DZ_4_2_2, DZ_4_1_3, DZ_4_2_3)
+=     if (DZ_4_1_2 == HotZone && DZ_4_2_2 == HotZone && DZ_4_1_3 == HotZone && DZ_4_2_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_1_2 == ColdZone && DZ_4_2_2 == HotZone && DZ_4_1_3 == HotZone && DZ_4_2_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_1_2 == HotZone && DZ_4_2_2 == ColdZone && DZ_4_1_3 == HotZone && DZ_4_2_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_1_2 == HotZone && DZ_4_2_2 == HotZone && DZ_4_1_3 == ColdZone && DZ_4_2_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_1_2 == HotZone && DZ_4_2_2 == HotZone && DZ_4_1_3 == HotZone && DZ_4_2_3 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_1_2 == ColdZone && DZ_4_2_2 == ColdZone && DZ_4_1_3 == HotZone && DZ_4_2_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_2 == ColdZone && DZ_4_2_2 == HotZone && DZ_4_1_3 == ColdZone && DZ_4_2_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_2 == ColdZone && DZ_4_2_2 == HotZone && DZ_4_1_3 == HotZone && DZ_4_2_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_2 == HotZone && DZ_4_2_2 == ColdZone && DZ_4_1_3 == ColdZone && DZ_4_2_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_2 == HotZone && DZ_4_2_2 == ColdZone && DZ_4_1_3 == HotZone && DZ_4_2_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_2 == HotZone && DZ_4_2_2 == HotZone && DZ_4_1_3 == ColdZone && DZ_4_2_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_2 == ColdZone && DZ_4_2_2 == ColdZone && DZ_4_1_3 == ColdZone && DZ_4_2_3 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_1_2 == ColdZone && DZ_4_2_2 == ColdZone && DZ_4_1_3 == HotZone && DZ_4_2_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_1_2 == ColdZone && DZ_4_2_2 == HotZone && DZ_4_1_3 == ColdZone && DZ_4_2_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_1_2 == HotZone && DZ_4_2_2 == ColdZone && DZ_4_1_3 == ColdZone && DZ_4_2_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_1_2 == ColdZone && DZ_4_2_2 == ColdZone && DZ_4_1_3 == ColdZone && DZ_4_2_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_3_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_3_4 | DZ_5_2_3, DZ_5_3_3, DZ_5_2_4, DZ_5_3_4)
+=     if (DZ_5_2_3 == HotZone && DZ_5_3_3 == HotZone && DZ_5_2_4 == HotZone && DZ_5_3_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_2_3 == ColdZone && DZ_5_3_3 == HotZone && DZ_5_2_4 == HotZone && DZ_5_3_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_3 == HotZone && DZ_5_3_3 == ColdZone && DZ_5_2_4 == HotZone && DZ_5_3_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_3 == HotZone && DZ_5_3_3 == HotZone && DZ_5_2_4 == ColdZone && DZ_5_3_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_3 == HotZone && DZ_5_3_3 == HotZone && DZ_5_2_4 == HotZone && DZ_5_3_4 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_3 == ColdZone && DZ_5_3_3 == ColdZone && DZ_5_2_4 == HotZone && DZ_5_3_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_3 == ColdZone && DZ_5_3_3 == HotZone && DZ_5_2_4 == ColdZone && DZ_5_3_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_3 == ColdZone && DZ_5_3_3 == HotZone && DZ_5_2_4 == HotZone && DZ_5_3_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_3 == HotZone && DZ_5_3_3 == ColdZone && DZ_5_2_4 == ColdZone && DZ_5_3_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_3 == HotZone && DZ_5_3_3 == ColdZone && DZ_5_2_4 == HotZone && DZ_5_3_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_3 == HotZone && DZ_5_3_3 == HotZone && DZ_5_2_4 == ColdZone && DZ_5_3_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_3 == ColdZone && DZ_5_3_3 == ColdZone && DZ_5_2_4 == ColdZone && DZ_5_3_4 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_3 == ColdZone && DZ_5_3_3 == ColdZone && DZ_5_2_4 == HotZone && DZ_5_3_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_3 == ColdZone && DZ_5_3_3 == HotZone && DZ_5_2_4 == ColdZone && DZ_5_3_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_3 == HotZone && DZ_5_3_3 == ColdZone && DZ_5_2_4 == ColdZone && DZ_5_3_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_3 == ColdZone && DZ_5_3_3 == ColdZone && DZ_5_2_4 == ColdZone && DZ_5_3_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_2_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_2_1 | DZ_3_1_1, DZ_3_2_1)
+=     if (DZ_3_1_1 == HotZone && DZ_3_2_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_1_1 == HotZone && DZ_3_2_1 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_1 == ColdZone && DZ_3_2_1 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_1 == ColdZone && DZ_3_2_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_3_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_3_1 | DZ_4_2_1, DZ_4_3_1)
+=     if (DZ_4_2_1 == HotZone && DZ_4_3_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_2_1 == HotZone && DZ_4_3_1 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_1 == ColdZone && DZ_4_3_1 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_1 == ColdZone && DZ_4_3_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_4_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_4_1 | DZ_5_3_1, DZ_5_4_1)
+=     if (DZ_5_3_1 == HotZone && DZ_5_4_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_3_1 == HotZone && DZ_5_4_1 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_1 == ColdZone && DZ_5_4_1 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_1 == ColdZone && DZ_5_4_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_4_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_4_2 | DZ_5_3_1, DZ_5_4_1, DZ_5_3_2, DZ_5_4_2)
+=     if (DZ_5_3_1 == HotZone && DZ_5_4_1 == HotZone && DZ_5_3_2 == HotZone && DZ_5_4_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_3_1 == ColdZone && DZ_5_4_1 == HotZone && DZ_5_3_2 == HotZone && DZ_5_4_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_1 == HotZone && DZ_5_4_1 == ColdZone && DZ_5_3_2 == HotZone && DZ_5_4_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_1 == HotZone && DZ_5_4_1 == HotZone && DZ_5_3_2 == ColdZone && DZ_5_4_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_1 == HotZone && DZ_5_4_1 == HotZone && DZ_5_3_2 == HotZone && DZ_5_4_2 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_1 == ColdZone && DZ_5_4_1 == ColdZone && DZ_5_3_2 == HotZone && DZ_5_4_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_1 == ColdZone && DZ_5_4_1 == HotZone && DZ_5_3_2 == ColdZone && DZ_5_4_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_1 == ColdZone && DZ_5_4_1 == HotZone && DZ_5_3_2 == HotZone && DZ_5_4_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_1 == HotZone && DZ_5_4_1 == ColdZone && DZ_5_3_2 == ColdZone && DZ_5_4_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_1 == HotZone && DZ_5_4_1 == ColdZone && DZ_5_3_2 == HotZone && DZ_5_4_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_1 == HotZone && DZ_5_4_1 == HotZone && DZ_5_3_2 == ColdZone && DZ_5_4_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_1 == ColdZone && DZ_5_4_1 == ColdZone && DZ_5_3_2 == ColdZone && DZ_5_4_2 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_1 == ColdZone && DZ_5_4_1 == ColdZone && DZ_5_3_2 == HotZone && DZ_5_4_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_1 == ColdZone && DZ_5_4_1 == HotZone && DZ_5_3_2 == ColdZone && DZ_5_4_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_1 == HotZone && DZ_5_4_1 == ColdZone && DZ_5_3_2 == ColdZone && DZ_5_4_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_1 == ColdZone && DZ_5_4_1 == ColdZone && DZ_5_3_2 == ColdZone && DZ_5_4_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_3_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_3_2 | DZ_4_2_1, DZ_4_3_1, DZ_4_2_2, DZ_4_3_2)
+=     if (DZ_4_2_1 == HotZone && DZ_4_3_1 == HotZone && DZ_4_2_2 == HotZone && DZ_4_3_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_2_1 == ColdZone && DZ_4_3_1 == HotZone && DZ_4_2_2 == HotZone && DZ_4_3_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_2_1 == HotZone && DZ_4_3_1 == ColdZone && DZ_4_2_2 == HotZone && DZ_4_3_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_2_1 == HotZone && DZ_4_3_1 == HotZone && DZ_4_2_2 == ColdZone && DZ_4_3_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_2_1 == HotZone && DZ_4_3_1 == HotZone && DZ_4_2_2 == HotZone && DZ_4_3_2 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_2_1 == ColdZone && DZ_4_3_1 == ColdZone && DZ_4_2_2 == HotZone && DZ_4_3_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_1 == ColdZone && DZ_4_3_1 == HotZone && DZ_4_2_2 == ColdZone && DZ_4_3_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_1 == ColdZone && DZ_4_3_1 == HotZone && DZ_4_2_2 == HotZone && DZ_4_3_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_1 == HotZone && DZ_4_3_1 == ColdZone && DZ_4_2_2 == ColdZone && DZ_4_3_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_1 == HotZone && DZ_4_3_1 == ColdZone && DZ_4_2_2 == HotZone && DZ_4_3_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_1 == HotZone && DZ_4_3_1 == HotZone && DZ_4_2_2 == ColdZone && DZ_4_3_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_1 == ColdZone && DZ_4_3_1 == ColdZone && DZ_4_2_2 == ColdZone && DZ_4_3_2 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_2_1 == ColdZone && DZ_4_3_1 == ColdZone && DZ_4_2_2 == HotZone && DZ_4_3_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_2_1 == ColdZone && DZ_4_3_1 == HotZone && DZ_4_2_2 == ColdZone && DZ_4_3_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_2_1 == HotZone && DZ_4_3_1 == ColdZone && DZ_4_2_2 == ColdZone && DZ_4_3_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_2_1 == ColdZone && DZ_4_3_1 == ColdZone && DZ_4_2_2 == ColdZone && DZ_4_3_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_4_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_4_3 | DZ_5_3_2, DZ_5_4_2, DZ_5_3_3, DZ_5_4_3)
+=     if (DZ_5_3_2 == HotZone && DZ_5_4_2 == HotZone && DZ_5_3_3 == HotZone && DZ_5_4_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_3_2 == ColdZone && DZ_5_4_2 == HotZone && DZ_5_3_3 == HotZone && DZ_5_4_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_2 == HotZone && DZ_5_4_2 == ColdZone && DZ_5_3_3 == HotZone && DZ_5_4_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_2 == HotZone && DZ_5_4_2 == HotZone && DZ_5_3_3 == ColdZone && DZ_5_4_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_2 == HotZone && DZ_5_4_2 == HotZone && DZ_5_3_3 == HotZone && DZ_5_4_3 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_2 == ColdZone && DZ_5_4_2 == ColdZone && DZ_5_3_3 == HotZone && DZ_5_4_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_2 == ColdZone && DZ_5_4_2 == HotZone && DZ_5_3_3 == ColdZone && DZ_5_4_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_2 == ColdZone && DZ_5_4_2 == HotZone && DZ_5_3_3 == HotZone && DZ_5_4_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_2 == HotZone && DZ_5_4_2 == ColdZone && DZ_5_3_3 == ColdZone && DZ_5_4_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_2 == HotZone && DZ_5_4_2 == ColdZone && DZ_5_3_3 == HotZone && DZ_5_4_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_2 == HotZone && DZ_5_4_2 == HotZone && DZ_5_3_3 == ColdZone && DZ_5_4_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_2 == ColdZone && DZ_5_4_2 == ColdZone && DZ_5_3_3 == ColdZone && DZ_5_4_3 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_2 == ColdZone && DZ_5_4_2 == ColdZone && DZ_5_3_3 == HotZone && DZ_5_4_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_2 == ColdZone && DZ_5_4_2 == HotZone && DZ_5_3_3 == ColdZone && DZ_5_4_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_2 == HotZone && DZ_5_4_2 == ColdZone && DZ_5_3_3 == ColdZone && DZ_5_4_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_2 == ColdZone && DZ_5_4_2 == ColdZone && DZ_5_3_3 == ColdZone && DZ_5_4_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_2_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_2_2 | DZ_3_1_1, DZ_3_2_1, DZ_3_1_2, DZ_3_2_2)
+=     if (DZ_3_1_1 == HotZone && DZ_3_2_1 == HotZone && DZ_3_1_2 == HotZone && DZ_3_2_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_1_1 == ColdZone && DZ_3_2_1 == HotZone && DZ_3_1_2 == HotZone && DZ_3_2_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_1_1 == HotZone && DZ_3_2_1 == ColdZone && DZ_3_1_2 == HotZone && DZ_3_2_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_1_1 == HotZone && DZ_3_2_1 == HotZone && DZ_3_1_2 == ColdZone && DZ_3_2_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_1_1 == HotZone && DZ_3_2_1 == HotZone && DZ_3_1_2 == HotZone && DZ_3_2_2 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_1_1 == ColdZone && DZ_3_2_1 == ColdZone && DZ_3_1_2 == HotZone && DZ_3_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_1 == ColdZone && DZ_3_2_1 == HotZone && DZ_3_1_2 == ColdZone && DZ_3_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_1 == ColdZone && DZ_3_2_1 == HotZone && DZ_3_1_2 == HotZone && DZ_3_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_1 == HotZone && DZ_3_2_1 == ColdZone && DZ_3_1_2 == ColdZone && DZ_3_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_1 == HotZone && DZ_3_2_1 == ColdZone && DZ_3_1_2 == HotZone && DZ_3_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_1 == HotZone && DZ_3_2_1 == HotZone && DZ_3_1_2 == ColdZone && DZ_3_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_1 == ColdZone && DZ_3_2_1 == ColdZone && DZ_3_1_2 == ColdZone && DZ_3_2_2 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_1_1 == ColdZone && DZ_3_2_1 == ColdZone && DZ_3_1_2 == HotZone && DZ_3_2_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_1_1 == ColdZone && DZ_3_2_1 == HotZone && DZ_3_1_2 == ColdZone && DZ_3_2_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_1_1 == HotZone && DZ_3_2_1 == ColdZone && DZ_3_1_2 == ColdZone && DZ_3_2_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_1_1 == ColdZone && DZ_3_2_1 == ColdZone && DZ_3_1_2 == ColdZone && DZ_3_2_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_3_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_3_3 | DZ_4_2_2, DZ_4_3_2, DZ_4_2_3, DZ_4_3_3)
+=     if (DZ_4_2_2 == HotZone && DZ_4_3_2 == HotZone && DZ_4_2_3 == HotZone && DZ_4_3_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_2_2 == ColdZone && DZ_4_3_2 == HotZone && DZ_4_2_3 == HotZone && DZ_4_3_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_2_2 == HotZone && DZ_4_3_2 == ColdZone && DZ_4_2_3 == HotZone && DZ_4_3_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_2_2 == HotZone && DZ_4_3_2 == HotZone && DZ_4_2_3 == ColdZone && DZ_4_3_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_2_2 == HotZone && DZ_4_3_2 == HotZone && DZ_4_2_3 == HotZone && DZ_4_3_3 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_2_2 == ColdZone && DZ_4_3_2 == ColdZone && DZ_4_2_3 == HotZone && DZ_4_3_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_2 == ColdZone && DZ_4_3_2 == HotZone && DZ_4_2_3 == ColdZone && DZ_4_3_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_2 == ColdZone && DZ_4_3_2 == HotZone && DZ_4_2_3 == HotZone && DZ_4_3_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_2 == HotZone && DZ_4_3_2 == ColdZone && DZ_4_2_3 == ColdZone && DZ_4_3_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_2 == HotZone && DZ_4_3_2 == ColdZone && DZ_4_2_3 == HotZone && DZ_4_3_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_2 == HotZone && DZ_4_3_2 == HotZone && DZ_4_2_3 == ColdZone && DZ_4_3_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_2 == ColdZone && DZ_4_3_2 == ColdZone && DZ_4_2_3 == ColdZone && DZ_4_3_3 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_2_2 == ColdZone && DZ_4_3_2 == ColdZone && DZ_4_2_3 == HotZone && DZ_4_3_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_2_2 == ColdZone && DZ_4_3_2 == HotZone && DZ_4_2_3 == ColdZone && DZ_4_3_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_2_2 == HotZone && DZ_4_3_2 == ColdZone && DZ_4_2_3 == ColdZone && DZ_4_3_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_2_2 == ColdZone && DZ_4_3_2 == ColdZone && DZ_4_2_3 == ColdZone && DZ_4_3_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_4_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_4_4 | DZ_5_3_3, DZ_5_4_3, DZ_5_3_4, DZ_5_4_4)
+=     if (DZ_5_3_3 == HotZone && DZ_5_4_3 == HotZone && DZ_5_3_4 == HotZone && DZ_5_4_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_3_3 == ColdZone && DZ_5_4_3 == HotZone && DZ_5_3_4 == HotZone && DZ_5_4_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_3 == HotZone && DZ_5_4_3 == ColdZone && DZ_5_3_4 == HotZone && DZ_5_4_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_3 == HotZone && DZ_5_4_3 == HotZone && DZ_5_3_4 == ColdZone && DZ_5_4_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_3 == HotZone && DZ_5_4_3 == HotZone && DZ_5_3_4 == HotZone && DZ_5_4_4 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_3 == ColdZone && DZ_5_4_3 == ColdZone && DZ_5_3_4 == HotZone && DZ_5_4_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_3 == ColdZone && DZ_5_4_3 == HotZone && DZ_5_3_4 == ColdZone && DZ_5_4_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_3 == ColdZone && DZ_5_4_3 == HotZone && DZ_5_3_4 == HotZone && DZ_5_4_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_3 == HotZone && DZ_5_4_3 == ColdZone && DZ_5_3_4 == ColdZone && DZ_5_4_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_3 == HotZone && DZ_5_4_3 == ColdZone && DZ_5_3_4 == HotZone && DZ_5_4_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_3 == HotZone && DZ_5_4_3 == HotZone && DZ_5_3_4 == ColdZone && DZ_5_4_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_3 == ColdZone && DZ_5_4_3 == ColdZone && DZ_5_3_4 == ColdZone && DZ_5_4_4 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_3 == ColdZone && DZ_5_4_3 == ColdZone && DZ_5_3_4 == HotZone && DZ_5_4_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_3 == ColdZone && DZ_5_4_3 == HotZone && DZ_5_3_4 == ColdZone && DZ_5_4_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_3 == HotZone && DZ_5_4_3 == ColdZone && DZ_5_3_4 == ColdZone && DZ_5_4_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_3 == ColdZone && DZ_5_4_3 == ColdZone && DZ_5_3_4 == ColdZone && DZ_5_4_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_3_1_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_3_1_2 | DZ_2_1_1, DZ_2_1_2)
+=     if (DZ_2_1_1 == HotZone && DZ_2_1_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_2_1_1 == HotZone && DZ_2_1_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_1_1 == ColdZone && DZ_2_1_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_1_1 == ColdZone && DZ_2_1_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_1_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_1_3 | DZ_3_1_2, DZ_3_1_3)
+=     if (DZ_3_1_2 == HotZone && DZ_3_1_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_1_2 == HotZone && DZ_3_1_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_2 == ColdZone && DZ_3_1_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_2 == ColdZone && DZ_3_1_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_1_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_1_4 | DZ_4_1_3, DZ_4_1_4)
+=     if (DZ_4_1_3 == HotZone && DZ_4_1_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_1_3 == HotZone && DZ_4_1_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_3 == ColdZone && DZ_4_1_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_3 == ColdZone && DZ_4_1_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_1_5, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_1_5 | DZ_5_1_4, DZ_5_1_5)
+=     if (DZ_5_1_4 == HotZone && DZ_5_1_5 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_1_4 == HotZone && DZ_5_1_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_4 == ColdZone && DZ_5_1_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_4 == ColdZone && DZ_5_1_5 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_2_5, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_2_5 | DZ_5_1_4, DZ_5_2_4, DZ_5_1_5, DZ_5_2_5)
+=     if (DZ_5_1_4 == HotZone && DZ_5_2_4 == HotZone && DZ_5_1_5 == HotZone && DZ_5_2_5 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_1_4 == ColdZone && DZ_5_2_4 == HotZone && DZ_5_1_5 == HotZone && DZ_5_2_5 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_4 == HotZone && DZ_5_2_4 == ColdZone && DZ_5_1_5 == HotZone && DZ_5_2_5 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_4 == HotZone && DZ_5_2_4 == HotZone && DZ_5_1_5 == ColdZone && DZ_5_2_5 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_4 == HotZone && DZ_5_2_4 == HotZone && DZ_5_1_5 == HotZone && DZ_5_2_5 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_1_4 == ColdZone && DZ_5_2_4 == ColdZone && DZ_5_1_5 == HotZone && DZ_5_2_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_4 == ColdZone && DZ_5_2_4 == HotZone && DZ_5_1_5 == ColdZone && DZ_5_2_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_4 == ColdZone && DZ_5_2_4 == HotZone && DZ_5_1_5 == HotZone && DZ_5_2_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_4 == HotZone && DZ_5_2_4 == ColdZone && DZ_5_1_5 == ColdZone && DZ_5_2_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_4 == HotZone && DZ_5_2_4 == ColdZone && DZ_5_1_5 == HotZone && DZ_5_2_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_4 == HotZone && DZ_5_2_4 == HotZone && DZ_5_1_5 == ColdZone && DZ_5_2_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_4 == ColdZone && DZ_5_2_4 == ColdZone && DZ_5_1_5 == ColdZone && DZ_5_2_5 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_4 == ColdZone && DZ_5_2_4 == ColdZone && DZ_5_1_5 == HotZone && DZ_5_2_5 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_4 == ColdZone && DZ_5_2_4 == HotZone && DZ_5_1_5 == ColdZone && DZ_5_2_5 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_4 == HotZone && DZ_5_2_4 == ColdZone && DZ_5_1_5 == ColdZone && DZ_5_2_5 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_1_4 == ColdZone && DZ_5_2_4 == ColdZone && DZ_5_1_5 == ColdZone && DZ_5_2_5 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_2_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_2_4 | DZ_4_1_3, DZ_4_2_3, DZ_4_1_4, DZ_4_2_4)
+=     if (DZ_4_1_3 == HotZone && DZ_4_2_3 == HotZone && DZ_4_1_4 == HotZone && DZ_4_2_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_1_3 == ColdZone && DZ_4_2_3 == HotZone && DZ_4_1_4 == HotZone && DZ_4_2_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_1_3 == HotZone && DZ_4_2_3 == ColdZone && DZ_4_1_4 == HotZone && DZ_4_2_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_1_3 == HotZone && DZ_4_2_3 == HotZone && DZ_4_1_4 == ColdZone && DZ_4_2_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_1_3 == HotZone && DZ_4_2_3 == HotZone && DZ_4_1_4 == HotZone && DZ_4_2_4 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_1_3 == ColdZone && DZ_4_2_3 == ColdZone && DZ_4_1_4 == HotZone && DZ_4_2_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_3 == ColdZone && DZ_4_2_3 == HotZone && DZ_4_1_4 == ColdZone && DZ_4_2_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_3 == ColdZone && DZ_4_2_3 == HotZone && DZ_4_1_4 == HotZone && DZ_4_2_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_3 == HotZone && DZ_4_2_3 == ColdZone && DZ_4_1_4 == ColdZone && DZ_4_2_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_3 == HotZone && DZ_4_2_3 == ColdZone && DZ_4_1_4 == HotZone && DZ_4_2_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_3 == HotZone && DZ_4_2_3 == HotZone && DZ_4_1_4 == ColdZone && DZ_4_2_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_3 == ColdZone && DZ_4_2_3 == ColdZone && DZ_4_1_4 == ColdZone && DZ_4_2_4 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_1_3 == ColdZone && DZ_4_2_3 == ColdZone && DZ_4_1_4 == HotZone && DZ_4_2_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_1_3 == ColdZone && DZ_4_2_3 == HotZone && DZ_4_1_4 == ColdZone && DZ_4_2_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_1_3 == HotZone && DZ_4_2_3 == ColdZone && DZ_4_1_4 == ColdZone && DZ_4_2_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_1_3 == ColdZone && DZ_4_2_3 == ColdZone && DZ_4_1_4 == ColdZone && DZ_4_2_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_3_5, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_3_5 | DZ_5_2_4, DZ_5_3_4, DZ_5_2_5, DZ_5_3_5)
+=     if (DZ_5_2_4 == HotZone && DZ_5_3_4 == HotZone && DZ_5_2_5 == HotZone && DZ_5_3_5 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_2_4 == ColdZone && DZ_5_3_4 == HotZone && DZ_5_2_5 == HotZone && DZ_5_3_5 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_4 == HotZone && DZ_5_3_4 == ColdZone && DZ_5_2_5 == HotZone && DZ_5_3_5 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_4 == HotZone && DZ_5_3_4 == HotZone && DZ_5_2_5 == ColdZone && DZ_5_3_5 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_4 == HotZone && DZ_5_3_4 == HotZone && DZ_5_2_5 == HotZone && DZ_5_3_5 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_2_4 == ColdZone && DZ_5_3_4 == ColdZone && DZ_5_2_5 == HotZone && DZ_5_3_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_4 == ColdZone && DZ_5_3_4 == HotZone && DZ_5_2_5 == ColdZone && DZ_5_3_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_4 == ColdZone && DZ_5_3_4 == HotZone && DZ_5_2_5 == HotZone && DZ_5_3_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_4 == HotZone && DZ_5_3_4 == ColdZone && DZ_5_2_5 == ColdZone && DZ_5_3_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_4 == HotZone && DZ_5_3_4 == ColdZone && DZ_5_2_5 == HotZone && DZ_5_3_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_4 == HotZone && DZ_5_3_4 == HotZone && DZ_5_2_5 == ColdZone && DZ_5_3_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_4 == ColdZone && DZ_5_3_4 == ColdZone && DZ_5_2_5 == ColdZone && DZ_5_3_5 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_4 == ColdZone && DZ_5_3_4 == ColdZone && DZ_5_2_5 == HotZone && DZ_5_3_5 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_4 == ColdZone && DZ_5_3_4 == HotZone && DZ_5_2_5 == ColdZone && DZ_5_3_5 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_4 == HotZone && DZ_5_3_4 == ColdZone && DZ_5_2_5 == ColdZone && DZ_5_3_5 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_2_4 == ColdZone && DZ_5_3_4 == ColdZone && DZ_5_2_5 == ColdZone && DZ_5_3_5 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_2_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_2_3 | DZ_3_1_2, DZ_3_2_2, DZ_3_1_3, DZ_3_2_3)
+=     if (DZ_3_1_2 == HotZone && DZ_3_2_2 == HotZone && DZ_3_1_3 == HotZone && DZ_3_2_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_1_2 == ColdZone && DZ_3_2_2 == HotZone && DZ_3_1_3 == HotZone && DZ_3_2_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_1_2 == HotZone && DZ_3_2_2 == ColdZone && DZ_3_1_3 == HotZone && DZ_3_2_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_1_2 == HotZone && DZ_3_2_2 == HotZone && DZ_3_1_3 == ColdZone && DZ_3_2_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_1_2 == HotZone && DZ_3_2_2 == HotZone && DZ_3_1_3 == HotZone && DZ_3_2_3 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_1_2 == ColdZone && DZ_3_2_2 == ColdZone && DZ_3_1_3 == HotZone && DZ_3_2_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_2 == ColdZone && DZ_3_2_2 == HotZone && DZ_3_1_3 == ColdZone && DZ_3_2_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_2 == ColdZone && DZ_3_2_2 == HotZone && DZ_3_1_3 == HotZone && DZ_3_2_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_2 == HotZone && DZ_3_2_2 == ColdZone && DZ_3_1_3 == ColdZone && DZ_3_2_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_2 == HotZone && DZ_3_2_2 == ColdZone && DZ_3_1_3 == HotZone && DZ_3_2_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_2 == HotZone && DZ_3_2_2 == HotZone && DZ_3_1_3 == ColdZone && DZ_3_2_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_2 == ColdZone && DZ_3_2_2 == ColdZone && DZ_3_1_3 == ColdZone && DZ_3_2_3 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_1_2 == ColdZone && DZ_3_2_2 == ColdZone && DZ_3_1_3 == HotZone && DZ_3_2_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_1_2 == ColdZone && DZ_3_2_2 == HotZone && DZ_3_1_3 == ColdZone && DZ_3_2_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_1_2 == HotZone && DZ_3_2_2 == ColdZone && DZ_3_1_3 == ColdZone && DZ_3_2_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_1_2 == ColdZone && DZ_3_2_2 == ColdZone && DZ_3_1_3 == ColdZone && DZ_3_2_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_3_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_3_4 | DZ_4_2_3, DZ_4_3_3, DZ_4_2_4, DZ_4_3_4)
+=     if (DZ_4_2_3 == HotZone && DZ_4_3_3 == HotZone && DZ_4_2_4 == HotZone && DZ_4_3_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_2_3 == ColdZone && DZ_4_3_3 == HotZone && DZ_4_2_4 == HotZone && DZ_4_3_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_2_3 == HotZone && DZ_4_3_3 == ColdZone && DZ_4_2_4 == HotZone && DZ_4_3_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_2_3 == HotZone && DZ_4_3_3 == HotZone && DZ_4_2_4 == ColdZone && DZ_4_3_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_2_3 == HotZone && DZ_4_3_3 == HotZone && DZ_4_2_4 == HotZone && DZ_4_3_4 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_2_3 == ColdZone && DZ_4_3_3 == ColdZone && DZ_4_2_4 == HotZone && DZ_4_3_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_3 == ColdZone && DZ_4_3_3 == HotZone && DZ_4_2_4 == ColdZone && DZ_4_3_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_3 == ColdZone && DZ_4_3_3 == HotZone && DZ_4_2_4 == HotZone && DZ_4_3_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_3 == HotZone && DZ_4_3_3 == ColdZone && DZ_4_2_4 == ColdZone && DZ_4_3_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_3 == HotZone && DZ_4_3_3 == ColdZone && DZ_4_2_4 == HotZone && DZ_4_3_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_3 == HotZone && DZ_4_3_3 == HotZone && DZ_4_2_4 == ColdZone && DZ_4_3_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_3 == ColdZone && DZ_4_3_3 == ColdZone && DZ_4_2_4 == ColdZone && DZ_4_3_4 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_2_3 == ColdZone && DZ_4_3_3 == ColdZone && DZ_4_2_4 == HotZone && DZ_4_3_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_2_3 == ColdZone && DZ_4_3_3 == HotZone && DZ_4_2_4 == ColdZone && DZ_4_3_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_2_3 == HotZone && DZ_4_3_3 == ColdZone && DZ_4_2_4 == ColdZone && DZ_4_3_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_2_3 == ColdZone && DZ_4_3_3 == ColdZone && DZ_4_2_4 == ColdZone && DZ_4_3_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_4_5, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_4_5 | DZ_5_3_4, DZ_5_4_4, DZ_5_3_5, DZ_5_4_5)
+=     if (DZ_5_3_4 == HotZone && DZ_5_4_4 == HotZone && DZ_5_3_5 == HotZone && DZ_5_4_5 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_3_4 == ColdZone && DZ_5_4_4 == HotZone && DZ_5_3_5 == HotZone && DZ_5_4_5 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_4 == HotZone && DZ_5_4_4 == ColdZone && DZ_5_3_5 == HotZone && DZ_5_4_5 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_4 == HotZone && DZ_5_4_4 == HotZone && DZ_5_3_5 == ColdZone && DZ_5_4_5 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_4 == HotZone && DZ_5_4_4 == HotZone && DZ_5_3_5 == HotZone && DZ_5_4_5 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_3_4 == ColdZone && DZ_5_4_4 == ColdZone && DZ_5_3_5 == HotZone && DZ_5_4_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_4 == ColdZone && DZ_5_4_4 == HotZone && DZ_5_3_5 == ColdZone && DZ_5_4_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_4 == ColdZone && DZ_5_4_4 == HotZone && DZ_5_3_5 == HotZone && DZ_5_4_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_4 == HotZone && DZ_5_4_4 == ColdZone && DZ_5_3_5 == ColdZone && DZ_5_4_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_4 == HotZone && DZ_5_4_4 == ColdZone && DZ_5_3_5 == HotZone && DZ_5_4_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_4 == HotZone && DZ_5_4_4 == HotZone && DZ_5_3_5 == ColdZone && DZ_5_4_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_4 == ColdZone && DZ_5_4_4 == ColdZone && DZ_5_3_5 == ColdZone && DZ_5_4_5 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_4 == ColdZone && DZ_5_4_4 == ColdZone && DZ_5_3_5 == HotZone && DZ_5_4_5 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_4 == ColdZone && DZ_5_4_4 == HotZone && DZ_5_3_5 == ColdZone && DZ_5_4_5 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_4 == HotZone && DZ_5_4_4 == ColdZone && DZ_5_3_5 == ColdZone && DZ_5_4_5 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_3_4 == ColdZone && DZ_5_4_4 == ColdZone && DZ_5_3_5 == ColdZone && DZ_5_4_5 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_3_2_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_3_2_1 | DZ_2_1_1, DZ_2_2_1)
+=     if (DZ_2_1_1 == HotZone && DZ_2_2_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_2_1_1 == HotZone && DZ_2_2_1 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_1_1 == ColdZone && DZ_2_2_1 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_1_1 == ColdZone && DZ_2_2_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_3_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_3_1 | DZ_3_2_1, DZ_3_3_1)
+=     if (DZ_3_2_1 == HotZone && DZ_3_3_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_2_1 == HotZone && DZ_3_3_1 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_1 == ColdZone && DZ_3_3_1 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_1 == ColdZone && DZ_3_3_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_4_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_4_1 | DZ_4_3_1, DZ_4_4_1)
+=     if (DZ_4_3_1 == HotZone && DZ_4_4_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_3_1 == HotZone && DZ_4_4_1 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_1 == ColdZone && DZ_4_4_1 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_1 == ColdZone && DZ_4_4_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_5_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_5_1 | DZ_5_4_1, DZ_5_5_1)
+=     if (DZ_5_4_1 == HotZone && DZ_5_5_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_4_1 == HotZone && DZ_5_5_1 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_1 == ColdZone && DZ_5_5_1 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_1 == ColdZone && DZ_5_5_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_5_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_5_2 | DZ_5_4_1, DZ_5_5_1, DZ_5_4_2, DZ_5_5_2)
+=     if (DZ_5_4_1 == HotZone && DZ_5_5_1 == HotZone && DZ_5_4_2 == HotZone && DZ_5_5_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_4_1 == ColdZone && DZ_5_5_1 == HotZone && DZ_5_4_2 == HotZone && DZ_5_5_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_1 == HotZone && DZ_5_5_1 == ColdZone && DZ_5_4_2 == HotZone && DZ_5_5_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_1 == HotZone && DZ_5_5_1 == HotZone && DZ_5_4_2 == ColdZone && DZ_5_5_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_1 == HotZone && DZ_5_5_1 == HotZone && DZ_5_4_2 == HotZone && DZ_5_5_2 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_1 == ColdZone && DZ_5_5_1 == ColdZone && DZ_5_4_2 == HotZone && DZ_5_5_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_1 == ColdZone && DZ_5_5_1 == HotZone && DZ_5_4_2 == ColdZone && DZ_5_5_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_1 == ColdZone && DZ_5_5_1 == HotZone && DZ_5_4_2 == HotZone && DZ_5_5_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_1 == HotZone && DZ_5_5_1 == ColdZone && DZ_5_4_2 == ColdZone && DZ_5_5_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_1 == HotZone && DZ_5_5_1 == ColdZone && DZ_5_4_2 == HotZone && DZ_5_5_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_1 == HotZone && DZ_5_5_1 == HotZone && DZ_5_4_2 == ColdZone && DZ_5_5_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_1 == ColdZone && DZ_5_5_1 == ColdZone && DZ_5_4_2 == ColdZone && DZ_5_5_2 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_1 == ColdZone && DZ_5_5_1 == ColdZone && DZ_5_4_2 == HotZone && DZ_5_5_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_1 == ColdZone && DZ_5_5_1 == HotZone && DZ_5_4_2 == ColdZone && DZ_5_5_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_1 == HotZone && DZ_5_5_1 == ColdZone && DZ_5_4_2 == ColdZone && DZ_5_5_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_1 == ColdZone && DZ_5_5_1 == ColdZone && DZ_5_4_2 == ColdZone && DZ_5_5_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_4_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_4_2 | DZ_4_3_1, DZ_4_4_1, DZ_4_3_2, DZ_4_4_2)
+=     if (DZ_4_3_1 == HotZone && DZ_4_4_1 == HotZone && DZ_4_3_2 == HotZone && DZ_4_4_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_3_1 == ColdZone && DZ_4_4_1 == HotZone && DZ_4_3_2 == HotZone && DZ_4_4_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_3_1 == HotZone && DZ_4_4_1 == ColdZone && DZ_4_3_2 == HotZone && DZ_4_4_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_3_1 == HotZone && DZ_4_4_1 == HotZone && DZ_4_3_2 == ColdZone && DZ_4_4_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_3_1 == HotZone && DZ_4_4_1 == HotZone && DZ_4_3_2 == HotZone && DZ_4_4_2 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_3_1 == ColdZone && DZ_4_4_1 == ColdZone && DZ_4_3_2 == HotZone && DZ_4_4_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_1 == ColdZone && DZ_4_4_1 == HotZone && DZ_4_3_2 == ColdZone && DZ_4_4_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_1 == ColdZone && DZ_4_4_1 == HotZone && DZ_4_3_2 == HotZone && DZ_4_4_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_1 == HotZone && DZ_4_4_1 == ColdZone && DZ_4_3_2 == ColdZone && DZ_4_4_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_1 == HotZone && DZ_4_4_1 == ColdZone && DZ_4_3_2 == HotZone && DZ_4_4_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_1 == HotZone && DZ_4_4_1 == HotZone && DZ_4_3_2 == ColdZone && DZ_4_4_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_1 == ColdZone && DZ_4_4_1 == ColdZone && DZ_4_3_2 == ColdZone && DZ_4_4_2 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_3_1 == ColdZone && DZ_4_4_1 == ColdZone && DZ_4_3_2 == HotZone && DZ_4_4_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_3_1 == ColdZone && DZ_4_4_1 == HotZone && DZ_4_3_2 == ColdZone && DZ_4_4_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_3_1 == HotZone && DZ_4_4_1 == ColdZone && DZ_4_3_2 == ColdZone && DZ_4_4_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_3_1 == ColdZone && DZ_4_4_1 == ColdZone && DZ_4_3_2 == ColdZone && DZ_4_4_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_5_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_5_3 | DZ_5_4_2, DZ_5_5_2, DZ_5_4_3, DZ_5_5_3)
+=     if (DZ_5_4_2 == HotZone && DZ_5_5_2 == HotZone && DZ_5_4_3 == HotZone && DZ_5_5_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_4_2 == ColdZone && DZ_5_5_2 == HotZone && DZ_5_4_3 == HotZone && DZ_5_5_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_2 == HotZone && DZ_5_5_2 == ColdZone && DZ_5_4_3 == HotZone && DZ_5_5_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_2 == HotZone && DZ_5_5_2 == HotZone && DZ_5_4_3 == ColdZone && DZ_5_5_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_2 == HotZone && DZ_5_5_2 == HotZone && DZ_5_4_3 == HotZone && DZ_5_5_3 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_2 == ColdZone && DZ_5_5_2 == ColdZone && DZ_5_4_3 == HotZone && DZ_5_5_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_2 == ColdZone && DZ_5_5_2 == HotZone && DZ_5_4_3 == ColdZone && DZ_5_5_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_2 == ColdZone && DZ_5_5_2 == HotZone && DZ_5_4_3 == HotZone && DZ_5_5_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_2 == HotZone && DZ_5_5_2 == ColdZone && DZ_5_4_3 == ColdZone && DZ_5_5_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_2 == HotZone && DZ_5_5_2 == ColdZone && DZ_5_4_3 == HotZone && DZ_5_5_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_2 == HotZone && DZ_5_5_2 == HotZone && DZ_5_4_3 == ColdZone && DZ_5_5_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_2 == ColdZone && DZ_5_5_2 == ColdZone && DZ_5_4_3 == ColdZone && DZ_5_5_3 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_2 == ColdZone && DZ_5_5_2 == ColdZone && DZ_5_4_3 == HotZone && DZ_5_5_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_2 == ColdZone && DZ_5_5_2 == HotZone && DZ_5_4_3 == ColdZone && DZ_5_5_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_2 == HotZone && DZ_5_5_2 == ColdZone && DZ_5_4_3 == ColdZone && DZ_5_5_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_2 == ColdZone && DZ_5_5_2 == ColdZone && DZ_5_4_3 == ColdZone && DZ_5_5_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_3_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_3_2 | DZ_3_2_1, DZ_3_3_1, DZ_3_2_2, DZ_3_3_2)
+=     if (DZ_3_2_1 == HotZone && DZ_3_3_1 == HotZone && DZ_3_2_2 == HotZone && DZ_3_3_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_2_1 == ColdZone && DZ_3_3_1 == HotZone && DZ_3_2_2 == HotZone && DZ_3_3_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_2_1 == HotZone && DZ_3_3_1 == ColdZone && DZ_3_2_2 == HotZone && DZ_3_3_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_2_1 == HotZone && DZ_3_3_1 == HotZone && DZ_3_2_2 == ColdZone && DZ_3_3_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_2_1 == HotZone && DZ_3_3_1 == HotZone && DZ_3_2_2 == HotZone && DZ_3_3_2 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_2_1 == ColdZone && DZ_3_3_1 == ColdZone && DZ_3_2_2 == HotZone && DZ_3_3_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_1 == ColdZone && DZ_3_3_1 == HotZone && DZ_3_2_2 == ColdZone && DZ_3_3_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_1 == ColdZone && DZ_3_3_1 == HotZone && DZ_3_2_2 == HotZone && DZ_3_3_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_1 == HotZone && DZ_3_3_1 == ColdZone && DZ_3_2_2 == ColdZone && DZ_3_3_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_1 == HotZone && DZ_3_3_1 == ColdZone && DZ_3_2_2 == HotZone && DZ_3_3_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_1 == HotZone && DZ_3_3_1 == HotZone && DZ_3_2_2 == ColdZone && DZ_3_3_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_1 == ColdZone && DZ_3_3_1 == ColdZone && DZ_3_2_2 == ColdZone && DZ_3_3_2 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_2_1 == ColdZone && DZ_3_3_1 == ColdZone && DZ_3_2_2 == HotZone && DZ_3_3_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_2_1 == ColdZone && DZ_3_3_1 == HotZone && DZ_3_2_2 == ColdZone && DZ_3_3_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_2_1 == HotZone && DZ_3_3_1 == ColdZone && DZ_3_2_2 == ColdZone && DZ_3_3_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_2_1 == ColdZone && DZ_3_3_1 == ColdZone && DZ_3_2_2 == ColdZone && DZ_3_3_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_4_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_4_3 | DZ_4_3_2, DZ_4_4_2, DZ_4_3_3, DZ_4_4_3)
+=     if (DZ_4_3_2 == HotZone && DZ_4_4_2 == HotZone && DZ_4_3_3 == HotZone && DZ_4_4_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_3_2 == ColdZone && DZ_4_4_2 == HotZone && DZ_4_3_3 == HotZone && DZ_4_4_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_3_2 == HotZone && DZ_4_4_2 == ColdZone && DZ_4_3_3 == HotZone && DZ_4_4_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_3_2 == HotZone && DZ_4_4_2 == HotZone && DZ_4_3_3 == ColdZone && DZ_4_4_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_3_2 == HotZone && DZ_4_4_2 == HotZone && DZ_4_3_3 == HotZone && DZ_4_4_3 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_3_2 == ColdZone && DZ_4_4_2 == ColdZone && DZ_4_3_3 == HotZone && DZ_4_4_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_2 == ColdZone && DZ_4_4_2 == HotZone && DZ_4_3_3 == ColdZone && DZ_4_4_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_2 == ColdZone && DZ_4_4_2 == HotZone && DZ_4_3_3 == HotZone && DZ_4_4_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_2 == HotZone && DZ_4_4_2 == ColdZone && DZ_4_3_3 == ColdZone && DZ_4_4_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_2 == HotZone && DZ_4_4_2 == ColdZone && DZ_4_3_3 == HotZone && DZ_4_4_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_2 == HotZone && DZ_4_4_2 == HotZone && DZ_4_3_3 == ColdZone && DZ_4_4_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_2 == ColdZone && DZ_4_4_2 == ColdZone && DZ_4_3_3 == ColdZone && DZ_4_4_3 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_3_2 == ColdZone && DZ_4_4_2 == ColdZone && DZ_4_3_3 == HotZone && DZ_4_4_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_3_2 == ColdZone && DZ_4_4_2 == HotZone && DZ_4_3_3 == ColdZone && DZ_4_4_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_3_2 == HotZone && DZ_4_4_2 == ColdZone && DZ_4_3_3 == ColdZone && DZ_4_4_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_3_2 == ColdZone && DZ_4_4_2 == ColdZone && DZ_4_3_3 == ColdZone && DZ_4_4_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_5_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_5_4 | DZ_5_4_3, DZ_5_5_3, DZ_5_4_4, DZ_5_5_4)
+=     if (DZ_5_4_3 == HotZone && DZ_5_5_3 == HotZone && DZ_5_4_4 == HotZone && DZ_5_5_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_4_3 == ColdZone && DZ_5_5_3 == HotZone && DZ_5_4_4 == HotZone && DZ_5_5_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_3 == HotZone && DZ_5_5_3 == ColdZone && DZ_5_4_4 == HotZone && DZ_5_5_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_3 == HotZone && DZ_5_5_3 == HotZone && DZ_5_4_4 == ColdZone && DZ_5_5_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_3 == HotZone && DZ_5_5_3 == HotZone && DZ_5_4_4 == HotZone && DZ_5_5_4 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_3 == ColdZone && DZ_5_5_3 == ColdZone && DZ_5_4_4 == HotZone && DZ_5_5_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_3 == ColdZone && DZ_5_5_3 == HotZone && DZ_5_4_4 == ColdZone && DZ_5_5_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_3 == ColdZone && DZ_5_5_3 == HotZone && DZ_5_4_4 == HotZone && DZ_5_5_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_3 == HotZone && DZ_5_5_3 == ColdZone && DZ_5_4_4 == ColdZone && DZ_5_5_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_3 == HotZone && DZ_5_5_3 == ColdZone && DZ_5_4_4 == HotZone && DZ_5_5_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_3 == HotZone && DZ_5_5_3 == HotZone && DZ_5_4_4 == ColdZone && DZ_5_5_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_3 == ColdZone && DZ_5_5_3 == ColdZone && DZ_5_4_4 == ColdZone && DZ_5_5_4 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_3 == ColdZone && DZ_5_5_3 == ColdZone && DZ_5_4_4 == HotZone && DZ_5_5_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_3 == ColdZone && DZ_5_5_3 == HotZone && DZ_5_4_4 == ColdZone && DZ_5_5_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_3 == HotZone && DZ_5_5_3 == ColdZone && DZ_5_4_4 == ColdZone && DZ_5_5_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_3 == ColdZone && DZ_5_5_3 == ColdZone && DZ_5_4_4 == ColdZone && DZ_5_5_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_3_2_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_3_2_2 | DZ_2_1_1, DZ_2_2_1, DZ_2_1_2, DZ_2_2_2)
+=     if (DZ_2_1_1 == HotZone && DZ_2_2_1 == HotZone && DZ_2_1_2 == HotZone && DZ_2_2_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_2_1_1 == ColdZone && DZ_2_2_1 == HotZone && DZ_2_1_2 == HotZone && DZ_2_2_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_2_1_1 == HotZone && DZ_2_2_1 == ColdZone && DZ_2_1_2 == HotZone && DZ_2_2_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_2_1_1 == HotZone && DZ_2_2_1 == HotZone && DZ_2_1_2 == ColdZone && DZ_2_2_2 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_2_1_1 == HotZone && DZ_2_2_1 == HotZone && DZ_2_1_2 == HotZone && DZ_2_2_2 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_2_1_1 == ColdZone && DZ_2_2_1 == ColdZone && DZ_2_1_2 == HotZone && DZ_2_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_1_1 == ColdZone && DZ_2_2_1 == HotZone && DZ_2_1_2 == ColdZone && DZ_2_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_1_1 == ColdZone && DZ_2_2_1 == HotZone && DZ_2_1_2 == HotZone && DZ_2_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_1_1 == HotZone && DZ_2_2_1 == ColdZone && DZ_2_1_2 == ColdZone && DZ_2_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_1_1 == HotZone && DZ_2_2_1 == ColdZone && DZ_2_1_2 == HotZone && DZ_2_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_1_1 == HotZone && DZ_2_2_1 == HotZone && DZ_2_1_2 == ColdZone && DZ_2_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_1_1 == ColdZone && DZ_2_2_1 == ColdZone && DZ_2_1_2 == ColdZone && DZ_2_2_2 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_2_1_1 == ColdZone && DZ_2_2_1 == ColdZone && DZ_2_1_2 == HotZone && DZ_2_2_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_2_1_1 == ColdZone && DZ_2_2_1 == HotZone && DZ_2_1_2 == ColdZone && DZ_2_2_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_2_1_1 == HotZone && DZ_2_2_1 == ColdZone && DZ_2_1_2 == ColdZone && DZ_2_2_2 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_2_1_1 == ColdZone && DZ_2_2_1 == ColdZone && DZ_2_1_2 == ColdZone && DZ_2_2_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_3_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_3_3 | DZ_3_2_2, DZ_3_3_2, DZ_3_2_3, DZ_3_3_3)
+=     if (DZ_3_2_2 == HotZone && DZ_3_3_2 == HotZone && DZ_3_2_3 == HotZone && DZ_3_3_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_2_2 == ColdZone && DZ_3_3_2 == HotZone && DZ_3_2_3 == HotZone && DZ_3_3_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_2_2 == HotZone && DZ_3_3_2 == ColdZone && DZ_3_2_3 == HotZone && DZ_3_3_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_2_2 == HotZone && DZ_3_3_2 == HotZone && DZ_3_2_3 == ColdZone && DZ_3_3_3 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_2_2 == HotZone && DZ_3_3_2 == HotZone && DZ_3_2_3 == HotZone && DZ_3_3_3 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_3_2_2 == ColdZone && DZ_3_3_2 == ColdZone && DZ_3_2_3 == HotZone && DZ_3_3_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_2 == ColdZone && DZ_3_3_2 == HotZone && DZ_3_2_3 == ColdZone && DZ_3_3_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_2 == ColdZone && DZ_3_3_2 == HotZone && DZ_3_2_3 == HotZone && DZ_3_3_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_2 == HotZone && DZ_3_3_2 == ColdZone && DZ_3_2_3 == ColdZone && DZ_3_3_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_2 == HotZone && DZ_3_3_2 == ColdZone && DZ_3_2_3 == HotZone && DZ_3_3_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_2 == HotZone && DZ_3_3_2 == HotZone && DZ_3_2_3 == ColdZone && DZ_3_3_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_2 == ColdZone && DZ_3_3_2 == ColdZone && DZ_3_2_3 == ColdZone && DZ_3_3_3 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_2_2 == ColdZone && DZ_3_3_2 == ColdZone && DZ_3_2_3 == HotZone && DZ_3_3_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_2_2 == ColdZone && DZ_3_3_2 == HotZone && DZ_3_2_3 == ColdZone && DZ_3_3_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_2_2 == HotZone && DZ_3_3_2 == ColdZone && DZ_3_2_3 == ColdZone && DZ_3_3_3 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_3_2_2 == ColdZone && DZ_3_3_2 == ColdZone && DZ_3_2_3 == ColdZone && DZ_3_3_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_4_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_4_4 | DZ_4_3_3, DZ_4_4_3, DZ_4_3_4, DZ_4_4_4)
+=     if (DZ_4_3_3 == HotZone && DZ_4_4_3 == HotZone && DZ_4_3_4 == HotZone && DZ_4_4_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_3_3 == ColdZone && DZ_4_4_3 == HotZone && DZ_4_3_4 == HotZone && DZ_4_4_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_3_3 == HotZone && DZ_4_4_3 == ColdZone && DZ_4_3_4 == HotZone && DZ_4_4_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_3_3 == HotZone && DZ_4_4_3 == HotZone && DZ_4_3_4 == ColdZone && DZ_4_4_4 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_3_3 == HotZone && DZ_4_4_3 == HotZone && DZ_4_3_4 == HotZone && DZ_4_4_4 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_4_3_3 == ColdZone && DZ_4_4_3 == ColdZone && DZ_4_3_4 == HotZone && DZ_4_4_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_3 == ColdZone && DZ_4_4_3 == HotZone && DZ_4_3_4 == ColdZone && DZ_4_4_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_3 == ColdZone && DZ_4_4_3 == HotZone && DZ_4_3_4 == HotZone && DZ_4_4_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_3 == HotZone && DZ_4_4_3 == ColdZone && DZ_4_3_4 == ColdZone && DZ_4_4_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_3 == HotZone && DZ_4_4_3 == ColdZone && DZ_4_3_4 == HotZone && DZ_4_4_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_3 == HotZone && DZ_4_4_3 == HotZone && DZ_4_3_4 == ColdZone && DZ_4_4_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_3 == ColdZone && DZ_4_4_3 == ColdZone && DZ_4_3_4 == ColdZone && DZ_4_4_4 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_3_3 == ColdZone && DZ_4_4_3 == ColdZone && DZ_4_3_4 == HotZone && DZ_4_4_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_3_3 == ColdZone && DZ_4_4_3 == HotZone && DZ_4_3_4 == ColdZone && DZ_4_4_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_3_3 == HotZone && DZ_4_4_3 == ColdZone && DZ_4_3_4 == ColdZone && DZ_4_4_4 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_4_3_3 == ColdZone && DZ_4_4_3 == ColdZone && DZ_4_3_4 == ColdZone && DZ_4_4_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_5_5, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_5_5 | DZ_5_4_4, DZ_5_5_4, DZ_5_4_5, DZ_5_5_5)
+=     if (DZ_5_4_4 == HotZone && DZ_5_5_4 == HotZone && DZ_5_4_5 == HotZone && DZ_5_5_5 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_4_4 == ColdZone && DZ_5_5_4 == HotZone && DZ_5_4_5 == HotZone && DZ_5_5_5 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_4 == HotZone && DZ_5_5_4 == ColdZone && DZ_5_4_5 == HotZone && DZ_5_5_5 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_4 == HotZone && DZ_5_5_4 == HotZone && DZ_5_4_5 == ColdZone && DZ_5_5_5 == HotZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_4 == HotZone && DZ_5_5_4 == HotZone && DZ_5_4_5 == HotZone && DZ_5_5_5 == ColdZone )
+{ HotZone: 0.65; ColdZone: 0.35; }
+else if (DZ_5_4_4 == ColdZone && DZ_5_5_4 == ColdZone && DZ_5_4_5 == HotZone && DZ_5_5_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_4 == ColdZone && DZ_5_5_4 == HotZone && DZ_5_4_5 == ColdZone && DZ_5_5_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_4 == ColdZone && DZ_5_5_4 == HotZone && DZ_5_4_5 == HotZone && DZ_5_5_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_4 == HotZone && DZ_5_5_4 == ColdZone && DZ_5_4_5 == ColdZone && DZ_5_5_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_4 == HotZone && DZ_5_5_4 == ColdZone && DZ_5_4_5 == HotZone && DZ_5_5_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_4 == HotZone && DZ_5_5_4 == HotZone && DZ_5_4_5 == ColdZone && DZ_5_5_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_4 == ColdZone && DZ_5_5_4 == ColdZone && DZ_5_4_5 == ColdZone && DZ_5_5_5 == HotZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_4 == ColdZone && DZ_5_5_4 == ColdZone && DZ_5_4_5 == HotZone && DZ_5_5_5 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_4 == ColdZone && DZ_5_5_4 == HotZone && DZ_5_4_5 == ColdZone && DZ_5_5_5 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_4 == HotZone && DZ_5_5_4 == ColdZone && DZ_5_4_5 == ColdZone && DZ_5_5_5 == ColdZone )
+{ HotZone: 0.35; ColdZone: 0.65; }
+else if (DZ_5_4_4 == ColdZone && DZ_5_5_4 == ColdZone && DZ_5_4_5 == ColdZone && DZ_5_5_5 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_2_1_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_2_1_2 | DZ_1_1_1)
+=     if (DZ_1_1_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_1_1_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_3_1_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_3_1_3 | DZ_2_1_2)
+=     if (DZ_2_1_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_2_1_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_1_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_1_4 | DZ_3_1_3)
+=     if (DZ_3_1_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_1_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_1_5, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_1_5 | DZ_4_1_4)
+=     if (DZ_4_1_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_1_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_1_6, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_1_6 | DZ_5_1_5)
+=     if (DZ_5_1_5 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_1_5 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_2_6, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_2_6 | DZ_5_1_5, DZ_5_2_5)
+=     if (DZ_5_1_5 == HotZone && DZ_5_2_5 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_1_5 == HotZone && DZ_5_2_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_5 == ColdZone && DZ_5_2_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_1_5 == ColdZone && DZ_5_2_5 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_2_5, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_2_5 | DZ_4_1_4, DZ_4_2_4)
+=     if (DZ_4_1_4 == HotZone && DZ_4_2_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_1_4 == HotZone && DZ_4_2_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_4 == ColdZone && DZ_4_2_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_1_4 == ColdZone && DZ_4_2_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_3_6, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_3_6 | DZ_5_2_5, DZ_5_3_5)
+=     if (DZ_5_2_5 == HotZone && DZ_5_3_5 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_2_5 == HotZone && DZ_5_3_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_5 == ColdZone && DZ_5_3_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_2_5 == ColdZone && DZ_5_3_5 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_2_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_2_4 | DZ_3_1_3, DZ_3_2_3)
+=     if (DZ_3_1_3 == HotZone && DZ_3_2_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_1_3 == HotZone && DZ_3_2_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_3 == ColdZone && DZ_3_2_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_1_3 == ColdZone && DZ_3_2_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_3_5, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_3_5 | DZ_4_2_4, DZ_4_3_4)
+=     if (DZ_4_2_4 == HotZone && DZ_4_3_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_2_4 == HotZone && DZ_4_3_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_4 == ColdZone && DZ_4_3_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_2_4 == ColdZone && DZ_4_3_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_4_6, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_4_6 | DZ_5_3_5, DZ_5_4_5)
+=     if (DZ_5_3_5 == HotZone && DZ_5_4_5 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_3_5 == HotZone && DZ_5_4_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_5 == ColdZone && DZ_5_4_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_3_5 == ColdZone && DZ_5_4_5 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_3_2_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_3_2_3 | DZ_2_1_2, DZ_2_2_2)
+=     if (DZ_2_1_2 == HotZone && DZ_2_2_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_2_1_2 == HotZone && DZ_2_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_1_2 == ColdZone && DZ_2_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_1_2 == ColdZone && DZ_2_2_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_3_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_3_4 | DZ_3_2_3, DZ_3_3_3)
+=     if (DZ_3_2_3 == HotZone && DZ_3_3_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_2_3 == HotZone && DZ_3_3_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_3 == ColdZone && DZ_3_3_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_2_3 == ColdZone && DZ_3_3_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_4_5, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_4_5 | DZ_4_3_4, DZ_4_4_4)
+=     if (DZ_4_3_4 == HotZone && DZ_4_4_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_3_4 == HotZone && DZ_4_4_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_4 == ColdZone && DZ_4_4_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_3_4 == ColdZone && DZ_4_4_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_5_6, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_5_6 | DZ_5_4_5, DZ_5_5_5)
+=     if (DZ_5_4_5 == HotZone && DZ_5_5_5 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_4_5 == HotZone && DZ_5_5_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_5 == ColdZone && DZ_5_5_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_4_5 == ColdZone && DZ_5_5_5 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_2_2_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_2_2_1 | DZ_1_1_1)
+=     if (DZ_1_1_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_1_1_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_3_3_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_3_3_1 | DZ_2_2_1)
+=     if (DZ_2_2_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_2_2_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_4_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_4_1 | DZ_3_3_1)
+=     if (DZ_3_3_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_3_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_5_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_5_1 | DZ_4_4_1)
+=     if (DZ_4_4_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_4_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_6_1, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_6_1 | DZ_5_5_1)
+=     if (DZ_5_5_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_5_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_6_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_6_2 | DZ_5_5_1, DZ_5_5_2)
+=     if (DZ_5_5_1 == HotZone && DZ_5_5_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_5_1 == HotZone && DZ_5_5_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_5_1 == ColdZone && DZ_5_5_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_5_1 == ColdZone && DZ_5_5_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_5_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_5_2 | DZ_4_4_1, DZ_4_4_2)
+=     if (DZ_4_4_1 == HotZone && DZ_4_4_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_4_1 == HotZone && DZ_4_4_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_4_1 == ColdZone && DZ_4_4_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_4_1 == ColdZone && DZ_4_4_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_6_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_6_3 | DZ_5_5_2, DZ_5_5_3)
+=     if (DZ_5_5_2 == HotZone && DZ_5_5_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_5_2 == HotZone && DZ_5_5_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_5_2 == ColdZone && DZ_5_5_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_5_2 == ColdZone && DZ_5_5_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_4_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_4_2 | DZ_3_3_1, DZ_3_3_2)
+=     if (DZ_3_3_1 == HotZone && DZ_3_3_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_3_1 == HotZone && DZ_3_3_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_3_1 == ColdZone && DZ_3_3_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_3_1 == ColdZone && DZ_3_3_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_5_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_5_3 | DZ_4_4_2, DZ_4_4_3)
+=     if (DZ_4_4_2 == HotZone && DZ_4_4_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_4_2 == HotZone && DZ_4_4_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_4_2 == ColdZone && DZ_4_4_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_4_2 == ColdZone && DZ_4_4_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_6_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_6_4 | DZ_5_5_3, DZ_5_5_4)
+=     if (DZ_5_5_3 == HotZone && DZ_5_5_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_5_3 == HotZone && DZ_5_5_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_5_3 == ColdZone && DZ_5_5_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_5_3 == ColdZone && DZ_5_5_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_3_3_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_3_3_2 | DZ_2_2_1, DZ_2_2_2)
+=     if (DZ_2_2_1 == HotZone && DZ_2_2_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_2_2_1 == HotZone && DZ_2_2_2 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_2_1 == ColdZone && DZ_2_2_2 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_2_2_1 == ColdZone && DZ_2_2_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_4_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_4_3 | DZ_3_3_2, DZ_3_3_3)
+=     if (DZ_3_3_2 == HotZone && DZ_3_3_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_3_2 == HotZone && DZ_3_3_3 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_3_2 == ColdZone && DZ_3_3_3 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_3_3_2 == ColdZone && DZ_3_3_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_5_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_5_4 | DZ_4_4_3, DZ_4_4_4)
+=     if (DZ_4_4_3 == HotZone && DZ_4_4_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_4_3 == HotZone && DZ_4_4_4 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_4_3 == ColdZone && DZ_4_4_4 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_4_4_3 == ColdZone && DZ_4_4_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_6_5, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_6_5 | DZ_5_5_4, DZ_5_5_5)
+=     if (DZ_5_5_4 == HotZone && DZ_5_5_5 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_5_4 == HotZone && DZ_5_5_5 == ColdZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_5_4 == ColdZone && DZ_5_5_5 == HotZone )
+{ HotZone: 0.5; ColdZone: 0.5; }
+else if (DZ_5_5_4 == ColdZone && DZ_5_5_5 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_2_2_2, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_2_2_2 | DZ_1_1_1)
+=     if (DZ_1_1_1 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_1_1_1 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_3_3_3, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_3_3_3 | DZ_2_2_2)
+=     if (DZ_2_2_2 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_2_2_2 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_4_4_4, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_4_4_4 | DZ_3_3_3)
+=     if (DZ_3_3_3 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_3_3_3 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_5_5_5, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_5_5_5 | DZ_4_4_4)
+=     if (DZ_4_4_4 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_4_4_4 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+defineNode(DZ_6_6_6, des);
+{defineState(Discrete, HotZone, ColdZone);
+p( DZ_6_6_6 | DZ_5_5_5)
+=     if (DZ_5_5_5 == HotZone )
+{ HotZone: 0.8; ColdZone: 0.2; }
+else if (DZ_5_5_5 == ColdZone )
+{ HotZone: 0.2; ColdZone: 0.8; }
+}
+ 
+

@@ -1,0 +1,26 @@
+// 3. Virus Mutation Model
+
+defineNode(ReservoirPopulationSize_1_1, des);
+{defineState(Discrete, AboveThreshold, BelowThreshold);
+p(ReservoirPopulationSize_1_1 ) = { AboveThreshold: 0.5; BelowThreshold: 0.5; } 
+}
+ 
+defineNode(HumanPopulationSize_1_1, des);
+{defineState(Discrete, AboveThreshold, BelowThreshold);
+p(HumanPopulationSize_1_1 ) = { AboveThreshold: 0.5; BelowThreshold: 0.5; } 
+}
+ 
+defineNode(IsMutatedVirus_1_1, des);
+{defineState(Discrete, Yes, No);
+p( IsMutatedVirus_1_1 | ReservoirPopulationSize_1_1, HumanPopulationSize_1_1)
+=     if (ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ Yes: 0.1; No: 0.9; }
+else if (ReservoirPopulationSize_1_1 == BelowThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ Yes: 0.6; No: 0.4; }
+else if (ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == BelowThreshold )
+{ Yes: 0.7; No: 0.3; }
+else if (ReservoirPopulationSize_1_1 == AboveThreshold && HumanPopulationSize_1_1 == AboveThreshold )
+{ Yes: 0.9; No: 0.1; }
+}
+ 
+

@@ -1,0 +1,48 @@
+// Korb, K. B., & Nicholson, A. E. (2010). Bayesian artificial intelligence. CRC press.
+
+defineNode(Pollution, des);
+{
+defineState(Discrete, low, high);
+p( Pollution ) = { low: 0.9; high: 0.1; } 
+}
+
+defineNode(Smoker, des);
+{defineState(Discrete, True, False);
+p( Smoker) = { True: 0.3; False: 0.7; } 
+} 
+ 
+defineNode(Cancer, des);
+{defineState(Discrete, True, False);
+p( Cancer | Pollution, Smoker)
+=     if (Pollution == low && Smoker == True )
+{ True: 0.03; False: 0.97; }
+else if (Pollution == low && Smoker == False )
+{ True: 0.001; False: 0.999; }
+else if (Pollution == high && Smoker == True )
+{ True: 0.05; False: 0.95; }
+else if (Pollution == high && Smoker == False )
+{ True: 0.02; False: 0.98; }
+}  
+
+defineNode(Xray, des);
+{
+defineState(Discrete, positive, negative);
+p( Xray  | Cancer)
+=     if (Cancer == True )
+{ positive: 0.9; negative: 0.1; }
+else if (Cancer == False )
+{ positive: 0.2; negative: 0.8; }
+}
+  
+defineNode(Dyspnoea, des);
+{defineState(Discrete, True, False);
+p( Dyspnoea  | Cancer)
+=     if (Cancer == True )
+{ True: 0.65; False: 0.35; }
+else if (Cancer == False )
+{ True: 0.3; False: 0.7; }
+}
+ 
+  	  	
+ 
+ 	

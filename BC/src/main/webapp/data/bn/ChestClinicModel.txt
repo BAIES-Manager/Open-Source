@@ -1,0 +1,58 @@
+// Chest Clinic Model
+// Lauritzen, S. L., & Spiegelhalter, D. J. (1988). Local computations with probabilities on graphical structures and their application to expert systems. Journal of the Royal Statistical Society. Series B (Methodological), 157-224.
+
+defineNode(VisitToAsia, desc);
+{ 
+	defineState(Discrete, visit, noVisit); 
+	p( VisitToAsia ) = { visit:0.01; noVisit:0.99; } 
+} 
+	
+defineNode(Smoking, desc);
+{ 
+	defineState(Discrete, smoker, nonSmoker); 
+	p( Smoking ) = { smoker:0.5; nonSmoker:0.5; } 
+} 
+		
+defineNode(LungCancer, desc);
+{ 
+	defineState(Discrete, present, absent); 
+	p( LungCancer | Smoking ) = if( Smoking == smoker ) { present:0.1; absent:0.9; }  
+	else if( Smoking == nonSmoker ){ present:0.01; absent:0.99; }  
+} 
+	
+defineNode(Tuberculosis, desc);
+{ 
+	defineState(Discrete, present,absent); 
+	p( Tuberculosis | VisitToAsia ) = if( VisitToAsia == visit ){ present:0.05; absent:0.95; }  
+	else if( VisitToAsia == noVisit ){ present:0.01; absent:0.99; }  
+} 
+	
+defineNode(Bronchitis, desc);
+{ 
+	defineState(Discrete, present,absent); 
+	p( Bronchitis | Smoking ) = if( Smoking == smoker ){ present:0.6; absent:0.4; }  
+	else if( Smoking == nonSmoker ){ present:0.3; absent:0.7; }  
+} 
+	
+defineNode(TuberculosisOrCancer, desc);
+{ 
+	defineState(Discrete, true, false); 
+	p( TuberculosisOrCancer | Tuberculosis, LungCancer) = if( Tuberculosis == present && LungCancer == present ){ true:1.0; false:0.0; }  
+	else if( Tuberculosis == present && LungCancer == absent ){ true:1.0; false:0.0; }  
+	else if( Tuberculosis == absent && LungCancer == present ){ true:1.0; false:0.0; }  
+	else if( Tuberculosis == absent && LungCancer == absent  ){ true:0.0; false:1.0; }  
+} 
+	
+defineNode(XrayResult, desc);			
+{ defineState(Discrete, abnormal, normal); 
+	p( XrayResult | TuberculosisOrCancer ) = if( TuberculosisOrCancer == true ){ abnormal:0.98; normal:0.02; }  
+	else if( TuberculosisOrCancer == false ){ abnormal:0.05; normal:0.95; }  
+}  
+	 
+defineNode(Dyspnoea, desc);
+{ defineState(Discrete, present,absent); 
+	p( Dyspnoea | Bronchitis, TuberculosisOrCancer) = if( Bronchitis == present && TuberculosisOrCancer == true ){ present:0.9; absent:0.1; }  
+	else if(  Bronchitis == present && TuberculosisOrCancer == false ){ present:0.8; absent:0.2; }  
+	else if(  Bronchitis == absent && TuberculosisOrCancer == true ){ present:0.7; absent:0.3; }  
+	else if(  Bronchitis == absent && TuberculosisOrCancer == false  ){ present:0.1; absent:0.9; }  
+}
