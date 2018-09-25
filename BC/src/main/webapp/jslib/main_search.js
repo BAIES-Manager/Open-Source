@@ -75,7 +75,6 @@ function removeElements(elements) {
 		elements.removeChild(elements.firstChild);
 	}
 }
-
 function searchResultDone(bn) {
     console.log("--- create items in the list of results ---");
  
@@ -143,11 +142,11 @@ function searchResultDone(bn) {
 	// image //////////////////////////////////////////////////////////////////////////////////
 	var img = document.createElement("Img");
 	img.setAttribute('class', "img-responsiv"); 
-	img.setAttribute('src', bn.image);
 	img.setAttribute('align', "middle"); 
-	img.setAttribute('height', "100%"); 
+//	img.setAttribute('height', "100%"); 
 	img.setAttribute('width', "100%");
 	img.setAttribute('object-fit', "contain");
+	img.setAttribute('src', bn.image);
 	 
 	center.appendChild(img);
 	   
