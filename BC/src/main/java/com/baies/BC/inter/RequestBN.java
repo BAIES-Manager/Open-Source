@@ -138,6 +138,7 @@ public class RequestBN extends HttpServlet {
 			
 			if (reqType.equalsIgnoreCase("html")) {
 				ret = reasoner.compile_to_BN_HTML(script, ev);
+				return ret;	// HTML for BN
 			} else if (reqType.equalsIgnoreCase("text")) {
 				ret = reasoner.compile_to_BN_Text(script, ev);
 				return ret;
