@@ -256,8 +256,8 @@ label {
 defineNode(EbolaVirusDisease, Description); 
 {
 	defineState(Discrete, has, not); 
-	p( EbolaVirusDisease ) = 
-		{ has: 0.1; not: 0.9;} 
+	p(EbolaVirusDisease) = 
+		{has: 0.1; not: 0.9;} 
 } 
 
 defineNode(Fever, Description); 
@@ -265,9 +265,9 @@ defineNode(Fever, Description);
 	defineState(Continuous); 
 	p(Fever | EbolaVirusDisease) =
         if (EbolaVirusDisease == has) 
-            { NormalDist(103, 1.4); } 
+            {NormalDist(103, 1.0);} 
         else if (EbolaVirusDisease == not) 
-            { NormalDist(98.6, 0.31); } 
+            {NormalDist(98.6, 1.0);} 
 }</div>
 						</form>
 					</div>
