@@ -182,8 +182,8 @@ label {
 					<button type="button" href="#Registration"
 						onclick="resetRegisterModel()" data-toggle="modal"
 						class="btn btn-primary btn-round btn-md">Registration</button>
-					<button type="button" onclick="saveImage()"
-						class="btn btn-primary btn-round btn-md">Image</button>
+<!-- 					<button type="button" onclick="saveImage()" -->
+<!-- 						class="btn btn-primary btn-round btn-md">Image</button> -->
 					<button type="button" href="#DataUploadModal"
 						onclick="dataUpload()" data-toggle="modal"
 						class="btn btn-primary btn-round btn-md">Machine Learning</button>
