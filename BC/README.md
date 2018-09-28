@@ -22,7 +22,7 @@ The BC project contains several external Jar files. We list the main jar files w
 5. cps2.jar: https://sourceforge.net/p/prognos/code/HEAD/tree/trunk/
 
 ## Execution: Web and Rest Server
-- In Eclipse, use "Run on Server".
+- Use "Run on Server" on Eclipse
 
 ## Possible Error & Soluton 
 1. The BC project may require "XDoclet". In such case, download "xdoclet-1.2.3.jar" and connect the folder of xdoclet to the BC project.
