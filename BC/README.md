@@ -1,9 +1,8 @@
 1. PROJECT 
-------------------
-	[Project Description Link](https://github.com/BAIES-Manager/Open-Source/blob/master/BC/Project%20Description.md)
-	------------------
-	[Demo Link](http://169.60.94.50:8080/BC/)
 
+[Project Description](Project%20Description.md)
+
+[Demo Link](http://169.60.94.50:8080/BC/)
 
 2. HOW TO RUN: Bayes Cloud Web and REST Server
 ------------------
