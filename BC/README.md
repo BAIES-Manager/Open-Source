@@ -6,6 +6,7 @@
 
 
 # 2. How to run: Bayes Cloud Web and REST Server
+![Bayes Cloud](doc/img/BC%20v2.PNG)
 
 ## Required SW
 1. Eclipse: Eclipse Java EE IDE for Web Developers. Version: Oxygen.2 Release (4.7.2) or higher
@@ -29,6 +30,8 @@ The BC project contains several external Jar files. We list the main jar files w
 
 
 # 3. How to run: Use Case of Situation Awareness for Ebola Virus Disease on Jupyter Notebook
+![Situation Awareness for Ebola Virus Disease](doc/img/Situation%20Awareness%20for%20Ebola%20Virus%20Disease.PNG)
+
 ## Required Python Modules
 1. Anaconda: Version  4.4.10 or higher
 2. folium: use "conda install -c conda-forge folium"
