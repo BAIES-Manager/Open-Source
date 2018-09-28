@@ -1,4 +1,11 @@
-1. HOW TO RUN: Bayes Cloud Web and REST Server
+1. PROJECT 
+------------------
+	[Project Description Link](https://github.com/BAIES-Manager/Open-Source/blob/master/BC/Project%20Description.md)
+	------------------
+	[Demo Link](http://169.60.94.50:8080/BC/)
+
+
+2. HOW TO RUN: Bayes Cloud Web and REST Server
 ------------------
 	
 	REQUIRED SW
@@ -27,7 +34,7 @@
 	1. The BC project may require "XDoclet". In such case, download "xdoclet-1.2.3.jar" and connect the folder of xdoclet to the BC project.
 
  
-2. HOW TO RUN: Use Case of Situation Awareness for Ebola Virus Disease on Jupyter Notebook
+3. HOW TO RUN: Use Case of Situation Awareness for Ebola Virus Disease on Jupyter Notebook
 ------------------
 
 	REQUIRED Python Modules
