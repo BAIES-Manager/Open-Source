@@ -44,7 +44,7 @@ The BC project contains several external Jar files. We list the main jar files w
 
 ## Required Python Modules
 1. Anaconda: Version  4.4.10 or higher
-2. folium: use "conda install -c conda-forge folium"
+2. folium: use "conda install -c conda-forge folium" using cmd
 
 ## Execution: Situation Awareness for Ebola Virus Disease
 1. Go to the folder "Open-Source\BC\src\test\python" using cmd
