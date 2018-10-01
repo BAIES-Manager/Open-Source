@@ -57,18 +57,18 @@ The BC project contains several external Jar files. We list the main jar files w
 
 # 4. User Guide Videos
 
-### 1 Model Editing
+### 4.1 Model Editing
 [![Alt text](https://img.youtube.com/vi/Ylk_f-nnlZ0/0.jpg)](https://www.youtube.com/watch?v=Ylk_f-nnlZ0)
 
-### 2 Model Searching
+### 4.2 Model Searching
 [![Alt text](https://img.youtube.com/vi/Dd3vVU2ptKs/0.jpg)](https://www.youtube.com/watch?v=Dd3vVU2ptKs)
 
-### 3 Model Integrating
+### 4.3 Model Integrating
 [![Alt text](https://img.youtube.com/vi/O0OqJVyeAkw/0.jpg)](https://www.youtube.com/watch?v=O0OqJVyeAkw)
 
-### 4 Model Registering
+### 4.4 Model Registering
 [![Alt text](https://img.youtube.com/vi/FT1eEgKl8Ac/0.jpg)](https://www.youtube.com/watch?v=FT1eEgKl8Ac)
 
-### 5 Machine Learning
+### 4.5 Machine Learning
 [![Alt text](https://img.youtube.com/vi/hF-ZeEF3m7o/0.jpg)](https://www.youtube.com/watch?v=hF-ZeEF3m7o)
 
