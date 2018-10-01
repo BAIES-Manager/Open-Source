@@ -4,6 +4,9 @@
 
 [Demo Link](http://169.60.94.50:8080/BC/)
 
+### Bayes Cloud
+[![Alt text](https://img.youtube.com/vi/bvYNIkWFsSE/0.jpg)](https://www.youtube.com/watch?v=bvYNIkWFsSE)
+
 ### Holistic Situational Awareness Using Bayesian Network Integration
 
 A Bayesian Network (BN) is a probabilistic graphical model that represents a joint distribution on a set of random variables in a compact form that exploits conditional independence relationships. BN is a powerful tool for predictive situation awareness, characterized by understanding the current situations and predicting the future situations. It also fosters making decisions and addressing problems under uncertainty. Subject matter experts (SME), as collective intelligence, develop a causal BN model and often integrate multi-BN models into one joint causal model to obtain a third model. 
@@ -50,3 +53,25 @@ The BC project contains several external Jar files. We list the main jar files w
 1. Go to the folder "Open-Source\BC\src\test\python" using cmd
 2. Run Jupyter Notebook on the folder
 3. Open the notebook file "BC_Predictive Situation Awareness for Ebola_OverTime.ipynb"
+
+
+# 4. User Guide Videos
+
+1 Model Editing
+[![Alt text](https://img.youtube.com/vi/Ylk_f-nnlZ0/0.jpg)](https://www.youtube.com/watch?v=Ylk_f-nnlZ0)
+
+2 Model Searching
+[![Alt text](https://img.youtube.com/vi/Dd3vVU2ptKs/0.jpg)](https://www.youtube.com/watch?v=Dd3vVU2ptKs)
+
+3 Model Integrating
+[![Alt text](https://img.youtube.com/vi/O0OqJVyeAkw/0.jpg)](https://www.youtube.com/watch?v=O0OqJVyeAkw)
+
+4 Model Registering
+[![Alt text](https://img.youtube.com/vi/FT1eEgKl8Ac/0.jpg)](https://www.youtube.com/watch?v=FT1eEgKl8Ac)
+
+4 Model Registering
+[![Alt text](https://img.youtube.com/vi/FT1eEgKl8Ac/0.jpg)](https://www.youtube.com/watch?v=FT1eEgKl8Ac)
+
+5 Machine Learning
+[![Alt text](https://img.youtube.com/vi/hF-ZeEF3m7o/0.jpg)](https://www.youtube.com/watch?v=hF-ZeEF3m7o)
+
